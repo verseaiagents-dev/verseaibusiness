@@ -1,0 +1,92 @@
+{{> partials/main }}
+
+<head>
+
+    {{> partials/title-meta title="Leaflet" }}
+
+    {{> partials/head-css }}
+
+</head>
+
+{{> partials/body }}
+
+<div class="group-data-[sidebar-size=sm]:min-h-sm group-data-[sidebar-size=sm]:relative">
+
+    {{> partials/menu }}
+
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
+
+        {{>partials/page-wrapper }}
+
+            <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+
+                {{> partials/page-title title="Leaflet" pagetitle="Maps" }}
+
+                <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-gray-800 text-15 dark:text-white">Example</h6>
+                            <div id="leaflet-map" class="leaflet-map"></div>
+                        </div>
+                    </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-gray-800 text-15 dark:text-white">Markers, Circles and Polygons</h6>
+                            <div id="leaflet-map-marker" class="leaflet-map"></div>
+                        </div>
+                    </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-gray-800 text-15 dark:text-white">Working with Popups</h6>
+                            <div id="leaflet-map-popup" class="leaflet-map"></div>
+                        </div>
+                    </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-gray-800 text-15 dark:text-white">Markers with Custom Icons</h6>
+                            <div id="leaflet-map-custom-icons" class="leaflet-map"></div>
+                        </div>
+                    </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-gray-800 text-15 dark:text-white">Interactive Choropleth Map</h6>
+                            <div id="leaflet-map-interactive-map" class="leaflet-map"></div>
+                        </div>
+                    </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-gray-800 text-15 dark:text-white">Layer Groups and Layers Control</h6>
+                            <div id="leaflet-map-group-control" class="leaflet-map"></div>
+                        </div>
+                    </div><!--end card-->
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        {{> partials/footer }}
+        
+    </div>
+
+</div>
+<!-- end main content -->
+
+{{> partials/customizer }}
+
+{{> partials/vendor-scripts }}
+
+<!-- leaflet plugin -->
+<script src="assets/libs/leaflet/leaflet.js"></script>
+
+<!-- leaflet map.init -->
+<script src="assets/js/pages/leaflet-us-states.js"></script>
+<script src="assets/js/pages/leaflet-map.init.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

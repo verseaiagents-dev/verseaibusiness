@@ -1,0 +1,166 @@
+Projenin Adı
+
+Balonla — AI Destekli E-Ticaret İzleme ve Chatbot Platformu
+
+Projenin Amacı
+
+Meta Pixel benzeri fakat daha gelişmiş bir izleme ve etkileşim takip sistemi geliştirmek.
+Herhangi bir e-ticaret, turizm, emlak veya benzeri web sitesine kolayca entegre edilebilecek şekilde çalışması.
+Kullanıcılara:
+Embed.js aracılığıyla siteye kolay kurulum,
+Chrome Extension aracılığıyla canlı sayfa üzerinde element seçme ve event atama,
+Laravel API ve panel aracılığıyla event yönetimi ve raporlama sunmak.
+Sonraki aşamada bu altyapının üzerine AI Chatbot entegrasyonu ekleyerek, kullanıcı davranış verisiyle beslenen akıllı öneriler sunmak.
+Projenin Temel Problemleri Çözme Hedefi
+
+Meta Pixel gibi izleme sistemleri genellikle sınırlı sayıda event sunar;
+Balonla, kullanıcıya kendi eventlerini kolayca oluşturma imkanı verecek.
+Farklı altyapılardaki siteler (WooCommerce, Shopify, custom) için tek çözüm sağlamak.
+Dinamik sayfalar (SPA, pagination, AJAX) ve farklı DOM yapılarıyla uyumlu olmak.
+İzleme verilerini AI destekli analizlerle pazarlama, satış ve funnel optimizasyonuna çevirmek.
+Ana Bileşenler
+
+1. Embed.js
+Vanilla JS ile yazılacak, platform bağımsız.
+data-balonla-id ile müşteri kimliği belirlenir.
+Laravel API’den event-selector eşleşmelerini çeker.
+DOM’a click/scroll gibi event listener’lar ekler.
+Kullanıcı etkileşimlerini POST /track endpoint’ine gönderir.
+SPA/pagination desteği için MutationObserver içerir.
+2. Chrome Extension
+Admin (müşteri) kendi sitesinde element seçimi yapar (hover-highlight yöntemi).
+Prompt veya input ile event adını belirler.
+Bu eşleşme POST /selectors ile API’ye kaydedilir.
+Daha sonra embed.js bu veriyi otomatik çeker ve uygular.
+3. Laravel API & Backend
+Endpoints:
+GET /selectors/{userId} — kullanıcıya ait selector-event eşleşmelerini döner
+POST /selectors — chrome eklentiden gelen yeni eşleşmeleri kaydeder
+POST /track — embed.js’ten gelen eventleri kaydeder
+Veritabanı tabloları:
+selectors (user_id, selector, event_name)
+events (user_id, event_name, selector, session_id, url, timestamp)
+İleride basit bir dashboard (istatistik, son eventler vs.) eklenebilir.
+Teknik Özellikler
+
+Dil & Framework: Laravel (API) + Vanilla JS (Embed.js) + Chrome Extension (Manifest V3)
+Veri Formatı: JSON (API request/response)
+Kimliklendirme: data-balonla-id üzerinden kullanıcı bazlı
+Depolama: MySQL veya PostgreSQL
+Gerçek Zamanlılık (opsiyonel): Laravel Echo + Pusher/Soket
+AI Entegrasyonu (ileride):
+Kullanıcı davranış analizi
+Dinamik öneriler / chatbot etkileşimi
+Hedeflenen Çıktı (MVP)
+
+Kullanıcı, kendi sitesine şu kodu ekler:
+<script src="https://cdn.balonla.com/embed.js" data-balonla-id="user_1234"></script>
+Chrome eklentisiyle DOM’dan element seçer ve event adı atar.
+Laravel API’de bu eşleşme kaydedilir.
+Embed.js bu eşleşmeyi çekip siteye uygular.
+Kullanıcı tıkladığında event Laravel API’ye loglanır.
+Dashboard’dan eventler görüntülenebilir.
+Fark Yaratan Özellikler
+
+Meta Pixel’den farklı olarak:
+Her element için manuel/otomatik event atama
+Farklı altyapılarda sorunsuz çalışma
+SPA/AJAX/Pagination desteği
+AI destekli otomatik element tanıma (ilerleyen aşama)
+Heatmap ve davranışsal verilerle funnel analizi
+Geliştirme Önceliği (3 Saatlik MVP Plan)
+
+Laravel API (1 saat)
+selectors ve track endpointleri
+Basit veritabanı tabloları
+Embed.js (1 saat)
+data-balonla-id okuma
+GET /selectors/{id} ile eşleşme çekme
+click listener ekleme ve POST /track gönderme
+Chrome Extension (1 saat)
+Element seçimi + highlight
+Event adı alma
+POST /selectors ile eşleşme gönderme
+Senin Benden Beklentilerin
+
+MVP mimarisini netleştirmek (yaptım)
+Embed.js & Laravel API entegrasyonunun en temiz yolunu önermek (yaptım)
+Chrome Extension ile element seçme + highlight mantığını anlatmak (yaptım)
+Event sistemi ve selector yapısının dinamik ve ölçeklenebilir hale getirilmesi
+Sonraki aşama: AI entegrasyonu + dashboard geliştirme
+Yeni Vizyon
+
+VersAI, işletmelerin kendi kategorilerine uygun AI Agent’lar oluşturmasını sağlar (örnek: e-ticaret, turizm, emlak).
+Bu agent’lar embed.js ve Chrome extension aracılığıyla işletmenin web sitesine veya veritabanına entegre olur.
+İşletme, VersAI paneli üzerinden agent’ını eğitir (kısa onboarding) ve verileri (ürün, hizmet, müşteri yorumları) sunucuya aktarır.
+Sunucu, bu verileri AI modelleri (ChatGPT, DeepSeek, vb.) ile yorumlar ve chatbot önerileri sağlar.
+Yeni Özellikler (Senin Eklediklerin)
+
+1. AI Agent Rol ve Eğitim Sistemi
+Kullanıcı kayıt olduğunda, sektörünü seçer (örnek: restoran, otel, emlak).
+Seçilen sektör için hazır rol şablonları (persona) sunulur.
+Kısa bir onboarding formuyla AI agent eğitilir: ürün verisi, hizmet bilgisi, marka tonu.
+Bu bilgiler vektör veritabanında (Pinecone/Qdrant/Weaviate) saklanır.
+2. Embed.js & Chrome Extension Entegrasyonu
+Embed.js:
+VersAI chatbot ve event tracker widget’ı sitelere entegre olur.
+Site verileri (ürün, kategori, buton eventleri) API aracılığıyla toplanır.
+Chrome Extension:
+Admin, sayfa üzerinde element seçer → event tanımlar veya ürünleri AI agent’a bağlar.
+Bu eşleşmeler API’ye kaydedilir.
+3. Kullanıcı Profili (QR Destekli)
+Her kullanıcıya QR destekli profil linki:
+vers.ai/profile?{user_id}
+Profil içeriği:
+Küçük bio (işletme hakkında)
+İstatistik veriler (toplam event, müşteri sohbetleri)
+AI yorumları / müşteri geri bildirimleri
+Sohbet widget’ı (ziyaretçiler AI agent ile konuşabilir)
+4. SaaS Ödeme Sistemi (Multi Payment)
+Çoklu ödeme entegrasyonu (Stripe, Iyzico, PayTR vb.)
+Admin panelinden hangi ödeme sisteminin aktif olacağı belirlenir.
+Planlar: Aylık/Yıllık paket + token kredisi.
+Yeni kullanıcıya 50 token hediye (demo kullanım için).
+5. AI ile Veri Yorumlama
+Tüm izleme ve sohbet verileri VersAI sunucusuna aktarılır.
+AI motoru, kullanıcıya:
+Satış funnel analizi
+Popüler ürün raporları
+Müşteri niyet analizi
+Otomatik öneri/cevap şablonları sunar.
+Yeni Proje Mimarisi (VersAI)
+
+Frontend:
+Embed.js (widget + tracking)
+Chrome Extension (element seçim + event eşleştirme)
+VersAI Web Panel (Laravel + Tailwind + Livewire/React)
+Backend:
+Laravel API
+Vektör Veritabanı (Pinecone/Qdrant)
+Token bazlı kullanım (her API isteği token tüketir)
+Çoklu ödeme entegrasyonu (Stripe, Iyzico, vb.)
+AI Katmanı:
+OpenAI / DeepSeek / Local LLM seçeneği
+Kategoriye özel rol ve prompt şablonları
+Veritabanından gelen içerik ile retrieval-augmented generation (RAG) modeli
+Kritik Yenilikler Balonla’dan Farklı Olarak
+
+Balonla = sadece izleme & event tracking
+VersAI = izleme + chatbot + AI yorumlama + profil sayfası + SaaS modeli
+QR profil + AI agent rolleri
+Token bazlı kredi sistemi
+Çoklu ödeme entegrasyonu ve SaaS ölçeklenebilirlik
+İlk MVP Hedefleri (3-4 Günlük)
+
+Kullanıcı kaydı, data-id ile embed.js entegrasyonu
+Chrome extension → selector tanımlama ve event kaydetme
+Laravel API → event kaydı + selector yönetimi
+Basit AI agent (statik rol) + sohbet widget entegrasyonu
+Token sistemi (50 token başlangıç, API isteğinde düşürme)
+QR profil sayfası (statik verilerle)
+Senin Şu Anki İletişiminden Çıkardıklarım
+
+Tracking mimarisini net anlattın (embed.js, chrome extension, API).
+Yeni eklediğin vizyon: AI agent rolleri + SaaS modeli + profil/QR sistemi + multi payment + token
+Hem izleme hem de chatbot özelliklerini tek platformda birleştireceksin.
+MVP’yi hızla çıkarmak istiyorsun, sonraki aşamada AI yorumlama ve dashboard geliştirme var.

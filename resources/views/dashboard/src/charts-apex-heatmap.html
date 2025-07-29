@@ -1,0 +1,79 @@
+{{> partials/main }}
+
+<head>
+
+    {{> partials/title-meta title="Heatmap Chart" }}
+
+    {{> partials/head-css }}
+
+</head>
+
+{{> partials/body }}
+
+<div class="group-data-[sidebar-size=sm]:min-h-sm group-data-[sidebar-size=sm]:relative">
+
+    {{> partials/menu }}
+
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
+
+        {{>partials/page-wrapper }}
+
+            <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+
+                {{> partials/page-title title="Heatmap Chart" pagetitle="Apexcharts" }}
+
+                <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">Basic</h6>
+                            <div id="basicHeatmap" class="apex-charts" data-chart-colors='["bg-custom-500"]' dir="ltr"></div>
+                        </div>
+                    </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">Multiple Colors</h6>
+                            <div id="multipleColorsHeatmap" class="apex-charts" data-chart-colors='["bg-custom-500", "bg-purple-500", "bg-orange-500", "bg-yellow-500", "bg-green-500"]' dir="ltr"></div>
+                        </div>
+                    </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">Color Range</h6>
+                            <div id="ColorsRangeHeatmap" class="apex-charts" data-chart-colors='["bg-custom-500", "bg-purple-500", "bg-orange-500", "bg-yellow-500"]' dir="ltr"></div>
+                        </div>
+                    </div><!--end card-->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">Rounded (Range without Shades)</h6>
+                            <div id="RoundedRangeHeatmap" class="apex-charts" data-chart-colors='["bg-sky-500", "bg-green-500"]' dir="ltr"></div>
+                        </div>
+                    </div><!--end card-->
+                </div><!--end grid-->
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-wrapper -->
+
+        {{> partials/footer }}
+
+    </div>
+        
+</div>
+<!-- end main content -->
+
+{{> partials/customizer }}
+
+{{> partials/vendor-scripts }}
+
+<!-- apexcharts js -->
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+<!-- heatmap init js-->
+<script src="assets/js/pages/apexcharts-heatmap.init.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

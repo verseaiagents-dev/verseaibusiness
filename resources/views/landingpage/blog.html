@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}" class="dark scroll-smooth" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mortal.Ai - AI Writer & Copywriting Tailwind CSS Template</title>
+        <meta name="description" content="AI Writer & Copywriting Tailwind CSS Template">
+        <meta name="keywords" content="AI, Copywriting, Tailwind, Responsive, Artificial Intelligence, Robot, Robot AI">
+        <meta name="author" content="Shreethemes">
+        <meta name="website" content="https://shreethemes.in">
+        <meta name="email" content="support@shreethemes.in">
+        <meta name="version" content="1.0">
+        <!-- favicon -->
+        <link href="assets/images/favicon.ico" rel="shortcut icon">
+
+        <!-- Css -->
+        <!-- Main Css -->
+        <link href="assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="assets/css/tailwind.css">
+
+    </head>
+    
+    <body class="font-figtree text-base text-slate-900 dark:text-white dark:bg-slate-900">
+        <!-- Loader Start -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="logo">
+                    <img src="assets/images/logo-icon-64.png" class="d-block mx-auto animate-[spin_10s_linear_infinite]" alt="">
+                </div>
+                <div class="justify-content-center">
+                    <div class="text-center">
+                        <h4 class="mb-0 mt-2 text-lg font-semibold">Mortal.Ai</h4>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader End -->
+
+        <!-- Start Navbar -->
+        <nav id="topnav" class="defaultscroll is-sticky">
+            <div class="container">
+                <!-- Logo container-->
+                <a class="logo" href="index.html">
+                    <span class="inline-block dark:hidden">
+                        <img src="assets/images/logo-dark.png" class="h-6 l-dark" alt="">
+                        <img src="assets/images/logo-white.png" class="h-6 l-light" alt="">
+                    </span>
+                    <img src="assets/images/logo-light.png" class="h-6 hidden dark:inline-block" alt="">
+                </a>
+
+                <!-- End Logo container-->
+
+                <!-- Start Mobile Toggle -->
+                <div class="menu-extras">
+                    <div class="menu-item">
+                        <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Mobile Toggle -->
+
+                <!--Login button Start-->
+                <ul class="buy-button list-none mb-0">
+                    <li class="inline mb-0">
+                        <a href="login.html">
+                            <span class="py-[6px] px-4 md:inline hidden items-center justify-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400/5 hover:bg-amber-400 border border-amber-400/10 hover:border-amber-400 text-amber-400 hover:text-white font-semibold">Login</span>
+                            <span class="py-[6px] px-4 inline md:hidden items-center justify-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400 hover:bg-amber-500 border border-amber-400 hover:border-amber-500 text-white font-semibold">Login</span>
+                        </a>
+                    </li>
+            
+                    <li class="md:inline hidden ps-1 mb-0 ">
+                        <a href="signup.html" target="_blank" class="py-[6px] px-4 inline-block items-center justify-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400 hover:bg-amber-500 border border-amber-400 hover:border-amber-500 text-white font-semibold">Signup</a>
+                    </li>
+                </ul>
+                <!--Login button End-->
+
+                <div id="navigation">
+                    <!-- Navigation Menu-->   
+                    <ul class="navigation-menu nav-light">
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="index.html" class="sub-menu-item">Hero One</a></li>
+                                <li><a href="index-two.html" class="sub-menu-item">Hero Two</a></li>
+                                <li><a href="index-three.html" class="sub-menu-item">Hero Three</a></li>
+                                <li><a href="index-light.html" class="sub-menu-item">Hero Light <span class="bg-gray-50 dark:bg-slate-800 text-[10px] shadow shadow-gray-300 dark:shadow-gray-700 font-bold px-2.5 py-0.5 rounded h-5 ms-1">Light</span></a></li>
+                            </ul>
+                        </li>
+
+                
+                        <li><a href="aboutus.html" class="sub-menu-item">About Us</a></li>
+                        <li><a href="pricing.html" class="sub-menu-item">Pricing </a></li>
+                
+                        <li class="has-submenu parent-parent-menu-item">
+                            <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="services.html" class="sub-menu-item">Services</a></li>
+                        
+                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Blog </a><span class="submenu-arrow"></span>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html" class="sub-menu-item"> Blogs</a></li>
+                                        <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
+                                    </ul> 
+                                </li>
+                        
+                                <li><a href="helpcenter.html" class="sub-menu-item">Helpcenter</a></li>
+
+                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span class="submenu-arrow"></span>
+                                    <ul class="submenu">
+                                        <li><a href="login.html" class="sub-menu-item"> Login</a></li>
+                                        <li><a href="signup.html" class="sub-menu-item"> Signup</a></li>
+                                        <li><a href="reset-password.html" class="sub-menu-item"> Forgot Password</a></li>
+                                    </ul> 
+                                </li>
+
+                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Utility </a><span class="submenu-arrow"></span>
+                                    <ul class="submenu">
+                                        <li><a href="terms.html" class="sub-menu-item">Terms of Services</a></li>
+                                        <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
+                                    </ul>  
+                                </li>
+                        
+                                <li><a href="error.html" class="sub-menu-item"> 404!</a></li>
+                            </ul>
+                        </li>
+                
+                        <li><a href="contact.html" class="sub-menu-item">Contact</a></li>
+                    </ul><!--end navigation menu-->
+                </div><!--end navigation-->
+            </div><!--end container-->
+        </nav><!--end header-->
+        <!-- End Navbar -->
+        
+        <!-- Start Hero -->
+        <section class="relative md:py-44 py-32 bg-[url('../../assets/images/bg/bg-pages.jpg')] bg-no-repeat bg-bottom bg-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-slate-900/70"></div>
+            <div class="container relative">
+                <div class="grid grid-cols-1 text-center mt-6">
+                    <div>
+                        <h5 class="md:text-4xl text-3xl md:leading-normal leading-normal tracking-wider font-semibold text-white mb-0">Latest Blogs & News</h5>
+                    </div>
+
+                    <ul class="tracking-[0.5px] mb-0 inline-block mt-5">
+                        <li class="inline-block capitalize text-[15px] font-medium duration-500 ease-in-out text-white/50 hover:text-white"><a href="index.html">Mortal.Ai</a></li>
+                        <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="mdi mdi-chevron-right"></i></li>
+                        <li class="inline-block capitalize text-[15px] font-medium duration-500 ease-in-out text-white" aria-current="page">Blogs</li>
+                    </ul>
+                </div>
+            </div>
+        </section><!--end section-->
+        <div class="relative">
+            <div class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white dark:text-slate-900">
+                <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!-- End Hero -->
+
+        <!-- start -->
+        <section class="relative md:py-24 py-16">
+            <div class="container relative">
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/1.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">What is Artificial Intelligence and How Does AI Work For Human</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+                    
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/2.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">Lignin and the future circular make sssay form AI support system</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/3.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">Research Operations vs Research Is Always Essay On MasAI Theme</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/4.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">Ensuring Your Data Security: Mas.ai is Now SOC 2 Type II Compliant</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/5.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">9 Best AI Translation Software (That You’ll Actually Use for translation)</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/6.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">How to choose the right qualitative</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/7.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">Scientists speculate that ours might not be held</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/8.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">The Multiverse is the collection of alternate universes</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/9.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">That share a universal hierarchy a large variety of these</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+                </div><!--end grid-->
+
+                <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
+                    <div class="md:col-span-12 text-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="inline-flex items-center -space-x-px">
+                                <li>
+                                    <a href="#" class="w-9 h-9 inline-flex text-sm justify-center items-center text-slate-400 bg-white dark:bg-slate-900 rounded-s-3xl hover:text-white border border-gray-100 dark:border-gray-800 hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400">
+                                        <i class="mdi mdi-chevron-left text-[20px] rtl:rotate-180 rtl:-mt-1"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-9 h-9 inline-flex text-sm justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400">1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-9 h-9 inline-flex text-sm justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400">2</a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-current="page" class="z-10 w-9 h-9 inline-flex text-sm justify-center items-center text-white bg-amber-400 border border-amber-400">3</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-9 h-9 inline-flex text-sm justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400">4</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-9 h-9 inline-flex text-sm justify-center items-center text-slate-400 hover:text-white bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400">5</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-9 h-9 inline-flex text-sm justify-center items-center text-slate-400 bg-white dark:bg-slate-900 rounded-e-3xl hover:text-white border border-gray-100 dark:border-gray-800 hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400">
+                                        <i class="mdi mdi-chevron-right text-[20px] rtl:rotate-180 rtl:-mt-1"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!--end col-->
+                </div>
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- end -->
+
+        <!-- Start Footer -->
+        <div class="relative">
+            <div class="shape absolute xl:-bottom-[30px] lg:-bottom-[16px] md:-bottom-[13px] -bottom-[5px] start-0 end-0 overflow-hidden z-1 rotate-180 text-white dark:text-slate-900">
+                <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <footer class="relative bg-gray-900 overflow-hidden">
+            <span class="absolute blur-[200px] w-[300px] h-[300px] rounded-full top-0 -start-[0] bg-gradient-to-tl to-amber-400  from-fuchsia-600 z-0"></span>
+            <div class="container-fluid relative md:py-24 py-16">
+                <div class="container relative">
+                    <div class="grid grid-cols-1 text-center">
+                        <div class="">
+                            <h4 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-5xl text-white tracking-normal mb-4">Start Your Free Trail.</h4>
+                            <p class="text-white/70 text-lg max-w-xl mx-auto">Artificial intelligence makes it fast easy to create content for your blog, social media, website, and more!</p>
+
+                            <div class="mt-6">
+                                <a href="" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent hover:bg-amber-400 border-gray-800 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-400 text-white rounded-md">Join Now!</a>
+                            </div>
+                        </div>
+                    </div><!--end grid-->
+                </div><!--end container-->
+            </div><!--end container fluid-->
+
+            <div class="container relative text-center">
+                <div class="grid grid-cols-1 border-t border-gray-800 dark:border-slate-800">
+                    <div class="py-[30px] px-0">
+                        <div class="grid md:grid-cols-2 items-center">
+                            <div class="md:text-start text-center">
+                                <a href="#" class="text-[22px] focus:outline-none">
+                                    <img src="assets/images/logo-light.png" class="mx-auto md:me-auto md:ms-0" alt="">
+                                </a>
+                            </div>
+
+                            <ul class="list-none footer-list md:text-end text-center mt-6 md:mt-0">
+                                <li class="inline"><a href="https://1.envato.market/mortalai" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="shopping-cart" class="h-4 w-4 align-middle" title="Buy Now"></i></a></li>
+                                <li class="inline"><a href="https://dribbble.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="dribbble" class="h-4 w-4 align-middle" title="dribbble"></i></a></li>
+                                <li class="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="linkedin" class="h-4 w-4 align-middle" title="Linkedin"></i></a></li>
+                                <li class="inline"><a href="https://www.facebook.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="facebook" class="h-4 w-4 align-middle" title="facebook"></i></a></li>
+                                <li class="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="instagram" class="h-4 w-4 align-middle" title="instagram"></i></a></li>
+                                <li class="inline"><a href="https://twitter.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="twitter" class="h-4 w-4 align-middle" title="twitter"></i></a></li>
+                                <li class="inline"><a href="mailto:support@shreethemes.in" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="mail" class="h-4 w-4 align-middle" title="email"></i></a></li>
+                                <li class="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="file-text" class="h-4 w-4 align-middle" title="customization"></i></a></li>
+                            </ul><!--end icon-->
+                        </div><!--end grid-->
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="py-[30px] px-0 border-t border-gray-800 dark:border-slate-800">
+                <div class="container relative text-center">
+                    <div class="grid grid-cols-1">
+                        <div class="text-center">
+                            <p class="text-gray-400">© <script>document.write(new Date().getFullYear())</script> Mortal.Ai. Design with <i class="mdi mdi-heart text-orange-700"></i> by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
+                        </div>
+                    </div><!--end grid-->
+                </div><!--end container-->
+            </div>
+        </footer><!--end footer-->
+        <!-- End Footer -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded z-10 bottom-5 end-5 h-9 w-9 text-center bg-amber-400 hover:bg-amber-500 text-white leading-9 justify-center items-center duration-500"><i data-feather="arrow-up" class="h-4 w-4 stroke-[3]"></i></a>
+        <!-- Back to top -->
+
+
+        <!-- LTR & RTL Mode Code -->
+        <div class="fixed top-1/3 -right-3 z-50">
+            <a href="" id="switchRtl">
+                <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold rtl:block ltr:hidden" >LTR</span>
+                <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold ltr:block rtl:hidden">RTL</span>
+            </a>
+        </div>
+        <!-- LTR & RTL Mode Code -->
+
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/js/plugins.init.js"></script>
+        <script src="assets/js/app.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>

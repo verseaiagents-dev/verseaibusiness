@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>VersAI - Cusumizable AI Agent for Your business</title>
+        <meta name="description" content="AI Writer & Copywriting Tailwind CSS Template">
+        <meta name="keywords" content="AI, Copywriting, Tailwind, Responsive, Artificial Intelligence, Robot, Robot AI">
+        <meta name="author" content="Shreethemes">
+        <meta name="website" content="https://shreethemes.in">
+        <meta name="email" content="support@shreethemes.in">
+        <meta name="version" content="1.0">
+        <!-- favicon -->
+        <link href="assets/images/favicon.ico" rel="shortcut icon">
+
+        <!-- Css -->
+        <link href="assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
+        <!-- Main Css -->
+        <link href="assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="assets/css/tailwind.css">
+
+    </head>
+    
+    <body class="font-figtree text-base text-slate-900 dark:text-white dark:bg-slate-900">
+        <!-- Loader Start -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="logo">
+                    <img src="assets/images/logo-icon-64.png" class="d-block mx-auto animate-[spin_10s_linear_infinite]" alt="">
+                </div>
+                <div class="justify-content-center">
+                    <div class="text-center">
+                        <h4 class="mb-0 mt-2 text-lg font-semibold">Mortal.Ai</h4>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader End -->
+        
+        <!-- Start Navbar -->
+        <nav id="topnav" class="defaultscroll is-sticky">
+            <div class="container">
+                <!-- Logo container-->
+                <a class="logo" href="index.html">
+                    <!-- <div class="block sm:hidden">
+                        <img src="assets/images/logo-icon-40.png" class="h-10 inline-block dark:hidden"  alt="">
+                        <img src="assets/images/logo-icon-40-white.png" class="h-10 hidden dark:inline-block"  alt="">
+                    </div> -->
+                    <!-- <div class="sm:block hidden"> -->
+                        <img src="assets/images/logo-dark.png" class="h-6 inline-block dark:hidden" alt="">
+                        <img src="assets/images/logo-white.png" class="h-6 hidden dark:inline-block" alt="">
+                    <!-- </div> -->
+                </a>
+                <!-- End Logo container-->
+
+                <!-- Start Mobile Toggle -->
+                <div class="menu-extras">
+                    <div class="menu-item">
+                        <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Mobile Toggle -->
+
+                <!--Login button Start-->
+                <ul class="buy-button list-none mb-0">
+                    <li class="inline mb-0">
+                        <a href="login.html">
+                            <span class="py-[6px] px-4 md:inline hidden items-center justify-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400/5 hover:bg-amber-400 border border-amber-400/10 hover:border-amber-400 text-amber-400 hover:text-white font-semibold">Login</span>
+                            <span class="py-[6px] px-4 inline md:hidden items-center justify-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400 hover:bg-amber-500 border border-amber-400 hover:border-amber-500 text-white font-semibold">Login</span>
+                        </a>
+                    </li>
+            
+                    <li class="md:inline hidden ps-1 mb-0 ">
+                        <a href="signup.html" target="_blank" class="py-[6px] px-4 inline-block items-center justify-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400 hover:bg-amber-500 border border-amber-400 hover:border-amber-500 text-white font-semibold">Signup</a>
+                    </li>
+                </ul>
+                <!--Login button End-->
+
+                <div id="navigation">
+                    <!-- Navigation Menu-->   
+                    <ul class="navigation-menu">
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="index.html" class="sub-menu-item">Hero One</a></li>
+                                <li><a href="index-two.html" class="sub-menu-item">Hero Two</a></li>
+                                <li><a href="index-three.html" class="sub-menu-item">Hero Three</a></li>
+                                <li><a href="index-light.html" class="sub-menu-item">Hero Light <span class="bg-gray-50 dark:bg-slate-800 text-[10px] shadow shadow-gray-300 dark:shadow-gray-700 font-bold px-2.5 py-0.5 rounded h-5 ms-1">Light</span></a></li>
+                            </ul>
+                        </li>
+
+                
+                        <li><a href="aboutus.html" class="sub-menu-item">About Us</a></li>
+                        <li><a href="pricing.html" class="sub-menu-item">Pricing </a></li>
+                
+                        <li class="has-submenu parent-parent-menu-item">
+                            <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="services.html" class="sub-menu-item">Services</a></li>
+                        
+                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Blog </a><span class="submenu-arrow"></span>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html" class="sub-menu-item"> Blogs</a></li>
+                                        <li><a href="blog-detail.html" class="sub-menu-item"> Blog Detail</a></li>
+                                    </ul> 
+                                </li>
+                        
+                                <li><a href="helpcenter.html" class="sub-menu-item">Helpcenter</a></li>
+
+                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Auth Pages </a><span class="submenu-arrow"></span>
+                                    <ul class="submenu">
+                                        <li><a href="login.html" class="sub-menu-item"> Login</a></li>
+                                        <li><a href="signup.html" class="sub-menu-item"> Signup</a></li>
+                                        <li><a href="reset-password.html" class="sub-menu-item"> Forgot Password</a></li>
+                                    </ul> 
+                                </li>
+
+                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Utility </a><span class="submenu-arrow"></span>
+                                    <ul class="submenu">
+                                        <li><a href="terms.html" class="sub-menu-item">Terms of Services</a></li>
+                                        <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
+                                    </ul>  
+                                </li>
+                        
+                                <li><a href="error.html" class="sub-menu-item"> 404!</a></li>
+                            </ul>
+                        </li>
+                
+                        <li><a href="contact.html" class="sub-menu-item">Contact</a></li>
+                    </ul><!--end navigation menu-->
+                </div><!--end navigation-->
+            </div><!--end container-->
+        </nav><!--end header-->
+        <!-- End Navbar -->
+
+        <!-- Start Hero -->
+        <section class="relative overflow-hidden pt-48 after:content-[''] after:absolute after:inset-0 after:mx-auto after:w-[56rem] after:h-[56rem] after:bg-gradient-to-tl after:to-amber-400/30  after:from-fuchsia-600/30 dark:after:to-amber-400/50 dark:after:from-fuchsia-600/50 after:blur-[200px] after:rounded-full after:-z-1">
+            <div class="container relative z-2">
+                <div class="grid grid-cols-1 text-center">
+                    <div class="">
+                        <h4 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-6xl mb-5">The AI Content <br> Plaform for <span class="typewrite bg-gradient-to-br from-amber-400 to-fuchsia-600 text-transparent bg-clip-text" data-period="2000" data-type='[ "Videos", "Modern Teams", "Social Media" ]'> <span class="wrap"></span></h4>
+                        <p class="text-slate-400 dark:text-white/60 text-lg max-w-xl mx-auto">Artificial intelligence makes it fast easy to create content for your blog, social media, website, and more!</p>
+
+                        <div class="mt-6">
+                            <a href="" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-amber-400 hover:bg-amber-500 border-amber-400 hover:border-amber-500 text-white rounded-md">Try For Free</a>
+
+                            <p class="text-slate-400 dark:text-white/60 text-sm mt-3">No credit card required. Free 14-days trial</p>
+                        </div>
+                    </div>
+                    <div class="relative mt-8 z-3">
+                        <img src="assets/images/classic01.png" alt="" class="mover">
+                    </div>
+                </div><!--end grid-->
+            </div>
+            
+            <div class="relative after:content-[''] after:absolute lg:after:-bottom-40 after:-bottom-28 after:end-0 after:start-0 after:mx-auto xl:after:w-[56rem] lg:after:w-[48rem] md:after:w-[32rem] after:w-[22rem] xl:after:h-[56rem] lg:after:h-[48rem] md:after:h-[32rem] after:h-[22rem] after:border-2 after:border-dashed after:border-slate-700/10 dark:after:border-slate-200/10 after:rounded-full after:-z-1 before:content-[''] before:absolute lg:before:-bottom-72 before:-bottom-56 before:end-0 before:start-0 before:mx-auto xl:before:w-[72rem] lg:before:w-[64rem] md:before:w-[48rem] before:w-[24rem] xl:before:h-[72rem] lg:before:h-[64rem] md:before:h-[48rem] before:h-[24rem] before:border-2 before:border-dashed before:border-slate-700/10 dark:before:border-slate-200/10 before:rounded-full before:-z-1"></div>
+        </section>
+        <!-- End Hero -->
+
+        <!-- Business Partner -->
+        <section class="pt-6">
+            <div class="container relative">
+                <div class="grid md:grid-cols-6 grid-cols-2 justify-center gap-6">
+                    <div class="mx-auto py-4">
+                        <img src="assets/images/client/amazon.svg" class="h-6" alt="">
+                    </div>
+
+                    <div class="mx-auto py-4">
+                        <img src="assets/images/client/google.svg" class="h-6" alt="">
+                    </div>
+                    
+                    <div class="mx-auto py-4">
+                        <img src="assets/images/client/lenovo.svg" class="h-6" alt="">
+                    </div>
+                    
+                    <div class="mx-auto py-4">
+                        <img src="assets/images/client/paypal.svg" class="h-6" alt="">
+                    </div>
+                    
+                    <div class="mx-auto py-4">
+                        <img src="assets/images/client/shopify.svg" class="h-6" alt="">
+                    </div>
+                    
+                    <div class="mx-auto py-4">
+                        <img src="assets/images/client/spotify.svg" class="h-6" alt="">
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- Business Partner -->
+
+        <!-- Start -->
+        <section class="relative md:py-24 py-16">
+            <div class="container relative">
+                <div class="grid grid-cols-1 pb-6 text-center">
+                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">AI + video creation = <br> outstanding <span class="bg-gradient-to-br from-amber-400 to-fuchsia-600 text-transparent bg-clip-text">Mortal.Ai</span></h3>
+
+                    <p class="text-slate-400 max-w-xl mx-auto">Artificial intelligence makes it fast easy to create content for your blog, social media, website, and more!</p>
+                </div><!--end grid-->
+
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-6">
+                    <div class="relative overflow-hidden bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-800">
+                        <div class="p-6 pb-0 relative overflow-hidden after:content-[''] after:absolute after:inset-0 after:mx-auto after:w-72 after:h-72 after:bg-gradient-to-tl after:to-amber-400 after:from-fuchsia-600 after:blur-[80px] after:rounded-full">
+                            <img src="assets/images/features/video-1.png" class="relative rounded-t-md shadow-md dark:shadow-slate-700 z-1" alt="">
+                        </div>
+
+                        <div class="p-6">
+                            <h5 class="text-lg font-semibold">$7000+ saved on video creation.</h5>
+                            <p class="text-slate-400 mt-3">Artificial intelligence makes it fast easy to create content for your video creations.</p>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="relative overflow-hidden bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-800">
+                        <div class="p-6 pb-0 relative overflow-hidden after:content-[''] after:absolute after:inset-0 after:mx-auto after:w-72 after:h-72 after:bg-gradient-to-tl after:to-amber-400 after:from-fuchsia-600 after:blur-[80px] after:rounded-full">
+                            <img src="assets/images/features/video-2.png" class="relative rounded-t-md shadow-md dark:shadow-slate-700 z-1" alt="">
+                        </div>
+
+                        <div class="p-6">
+                            <h5 class="text-lg font-semibold">35%+ increase in user engagement.</h5>
+                            <p class="text-slate-400 mt-3">Artificial intelligence makes it fast easy to create content for your video creations.</p>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="relative overflow-hidden bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-800">
+                        <div class="p-6 pb-0 relative overflow-hidden after:content-[''] after:absolute after:inset-0 after:mx-auto after:w-72 after:h-72 after:bg-gradient-to-tl after:to-amber-400 after:from-fuchsia-600 after:blur-[80px] after:rounded-full">
+                            <img src="assets/images/features/video-3.png" class="relative rounded-t-md shadow-md dark:shadow-slate-700 z-1" alt="">
+                        </div>
+
+                        <div class="p-6">
+                            <h5 class="text-lg font-semibold">5 hours saved on single video.</h5>
+                            <p class="text-slate-400 mt-3">Artificial intelligence makes it fast easy to create content for your video creations.</p>
+                        </div>
+                    </div><!--end content-->
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-6">
+                    <div class="relative overflow-hidden rounded-lg border border-amber-400/5 bg-gradient-to-tl to-amber-400/30  from-fuchsia-600/30 dark:to-amber-400/50 dark:from-fuchsia-600/50 ps-6 pt-6 lg:me-8">
+                        <img src="assets/images/features/1.png" class="ltr:rounded-tl-lg rtl:rounded-tr-lg" alt="">
+                    </div>
+
+                    <div class="">
+                        <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Create Content In Single <br> Click With AI Power</h3>
+                        <p class="text-slate-400 max-w-xl">"Usually, our colleagues don't jump in the air when they hear e-learning, but the AI videos created with Mortal.Ai have sparked motivation that we haven't seen before."</p>
+
+                        <ul class="list-none text-slate-400 mt-4">
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Digital Marketing Solutions for Tomorrow</li>
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Our Talented & Experienced Marketing Agency</li>
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Create your own skin to match your brand</li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="" class="hover:text-amber-400 font-medium duration-500">Find Out More <i class="mdi mdi-chevron-right text-[20px] align-middle"></i></a>
+                        </div>
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-6">
+                    <div class="relative order-1 md:order-2">
+                        <div class="relative overflow-hidden rounded-lg border border-amber-400/5 bg-gradient-to-tl to-amber-400/30  from-fuchsia-600/30 dark:to-amber-400/50 dark:from-fuchsia-600/50 pe-6 pt-6 lg:ms-8">
+                            <img src="assets/images/features/2.png" class="ltr:rounded-tr-lg rtl:rounded-tl-lg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="order-2 md:order-1">
+                        <h4 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Write Blog Posts, <br> Stories, & Even Books</h4>
+                        <p class="text-slate-400">"Usually, our colleagues don't jump in the air when they hear e-learning, but the AI videos created with Mortal.Ai have sparked motivation that we haven't seen before."</p>
+                        <ul class="list-none text-slate-400 mt-4">
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Digital Marketing Solutions for Tomorrow</li>
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Our Talented & Experienced Marketing Agency</li>
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Create your own skin to match your brand</li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="" class="hover:text-amber-400 font-medium duration-500">Find Out More <i class="mdi mdi-chevron-right text-[20px] align-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end container-->
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid grid-cols-1 pb-6 text-center">
+                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Amazing Features</h3>
+
+                    <p class="text-slate-400 max-w-xl mx-auto">Artificial intelligence makes it fast easy to create content for your blog, social media, website, and more!</p>
+                </div><!--end grid-->
+
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-6">
+                    <div class="px-6 py-10 shadow hover:shadow-md dark:shadow-gray-800 dark:hover:shadow-gray-700 duration-500 rounded-lg bg-white dark:bg-slate-900">
+                        <i class="mdi mdi-flip-horizontal text-4xl bg-gradient-to-tl to-amber-400 from-fuchsia-600 text-transparent bg-clip-text"></i>
+
+                        <div class="content mt-7">
+                            <a href="" class="title h5 text-lg font-medium hover:text-amber-400 duration-500">Plagiarism checker</a>
+                            <p class="text-slate-400 mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
+                            
+                            <div class="mt-5">
+                                <a href="" class="hover:text-amber-400 font-medium duration-500">Read More <i class="mdi mdi-arrow-right align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-10 shadow hover:shadow-md dark:shadow-gray-800 dark:hover:shadow-gray-700 duration-500 rounded-lg bg-white dark:bg-slate-900">
+                        <i class="mdi mdi-email-edit-outline text-4xl bg-gradient-to-tl to-amber-400 from-fuchsia-600 text-transparent bg-clip-text"></i>
+
+                        <div class="content mt-7">
+                            <a href="" class="title h5 text-lg font-medium hover:text-amber-400 duration-500">Content Generator</a>
+                            <p class="text-slate-400 mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
+                            
+                            <div class="mt-5">
+                                <a href="" class="hover:text-amber-400 font-medium duration-500">Read More <i class="mdi mdi-arrow-right align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-10 shadow hover:shadow-md dark:shadow-gray-800 dark:hover:shadow-gray-700 duration-500 rounded-lg bg-white dark:bg-slate-900">
+                        <i class="mdi mdi-star-outline text-4xl bg-gradient-to-tl to-amber-400 from-fuchsia-600 text-transparent bg-clip-text"></i>
+
+                        <div class="content mt-7">
+                            <a href="" class="title h5 text-lg font-medium hover:text-amber-400 duration-500">Search Engine Optimization</a>
+                            <p class="text-slate-400 mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
+                            
+                            <div class="mt-5">
+                                <a href="" class="hover:text-amber-400 font-medium duration-500">Read More <i class="mdi mdi-arrow-right align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-10 shadow hover:shadow-md dark:shadow-gray-800 dark:hover:shadow-gray-700 duration-500 rounded-lg bg-white dark:bg-slate-900">
+                        <i class="mdi mdi-bookmark-outline text-4xl bg-gradient-to-tl to-amber-400 from-fuchsia-600 text-transparent bg-clip-text"></i>
+
+                        <div class="content mt-7">
+                            <a href="" class="title h5 text-lg font-medium hover:text-amber-400 duration-500">Digital name generator</a>
+                            <p class="text-slate-400 mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
+                            
+                            <div class="mt-5">
+                                <a href="" class="hover:text-amber-400 font-medium duration-500">Read More <i class="mdi mdi-arrow-right align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="px-6 py-10 shadow hover:shadow-md dark:shadow-gray-800 dark:hover:shadow-gray-700 duration-500 rounded-lg bg-white dark:bg-slate-900">
+                        <i class="mdi mdi-account-check-outline text-4xl bg-gradient-to-tl to-amber-400 from-fuchsia-600 text-transparent bg-clip-text"></i>
+
+                        <div class="content mt-7">
+                            <a href="" class="title h5 text-lg font-medium hover:text-amber-400 duration-500">Ad Targeting tips</a>
+                            <p class="text-slate-400 mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
+                            
+                            <div class="mt-5">
+                                <a href="" class="hover:text-amber-400 font-medium duration-500">Read More <i class="mdi mdi-arrow-right align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-10 shadow hover:shadow-md dark:shadow-gray-800 dark:hover:shadow-gray-700 duration-500 rounded-lg bg-white dark:bg-slate-900">
+                        <i class="mdi mdi-comment-outline text-4xl bg-gradient-to-tl to-amber-400 from-fuchsia-600 text-transparent bg-clip-text"></i>
+
+                        <div class="content mt-7">
+                            <a href="" class="title h5 text-lg font-medium hover:text-amber-400 duration-500">Content Rewriter</a>
+                            <p class="text-slate-400 mt-3">The phrasal sequence of the is now so that many campaign and benefit</p>
+                            
+                            <div class="mt-5">
+                                <a href="" class="hover:text-amber-400 font-medium duration-500">Read More <i class="mdi mdi-arrow-right align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end container-->
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-6">
+                    <div class="relative overflow-hidden after:content-[''] after:absolute after:inset-0 after:mx-auto after:w-72 after:h-72 after:bg-gradient-to-tl after:to-amber-400 after:from-fuchsia-600 after:blur-[80px] after:rounded-full p-6 bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-slate-800">
+                        <div class="relative overflow-hidden rounded-lg shadow-md dark:shadow-gray-800 z-1">
+                            <div class="relative">
+                                <video controls autoplay loop>
+                                    <source src="assets/images/modern.mp4" type="video/mp4">
+                                </video>
+                                <a href="" class="absolute top-2 start-2 rounded-full p-0.5 bg-white dark:bg-slate-900 shadow dark:shadow-slate-800 z-10"><img src="assets/images/flags/germany.png" class="h-7 w-7 rounded-full" alt=""></a>
+                            </div>
+    
+                            <div class="absolute bottom-2/4 translate-y-2/4 start-0 end-0 text-center">
+                                <a href="#!" data-type="youtube" data-id="S_CGed6E610" class="lightbox lg:h-16 h-14 lg:w-16 w-14 rounded-full shadow-lg dark:shadow-gray-800 inline-flex items-center justify-center bg-white dark:bg-slate-900 hover:bg-amber-400 dark:hover:bg-amber-400 text-amber-400 hover:text-white duration-500 ease-in-out mx-auto">
+                                    <i class="mdi mdi-play inline-flex items-center justify-center text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <a href="" class="py-[6px] px-2 inline-flex items-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400/5 hover:bg-amber-400 border border-amber-400/10 hover:border-amber-400 text-amber-400 hover:text-white font-semibold m-0.5"><img src="assets/images/flags/italy.png" class="h-5 w-5 me-1" alt=""> Italian</a>
+                            <a href="" class="py-[6px] px-2 inline-flex items-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400/5 hover:bg-amber-400 border border-amber-400/10 hover:border-amber-400 text-amber-400 hover:text-white font-semibold m-0.5"><img src="assets/images/flags/india.png" class="h-5 w-5 me-1" alt=""> Hindi</a>
+                            <a href="" class="py-[6px] px-2 inline-flex items-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400/5 hover:bg-amber-400 border border-amber-400/10 hover:border-amber-400 text-amber-400 hover:text-white font-semibold m-0.5"><img src="assets/images/flags/russia.png" class="h-5 w-5 me-1" alt=""> Russian</a>
+                            <a href="" class="py-[6px] px-2 inline-flex items-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400/5 hover:bg-amber-400 border border-amber-400/10 hover:border-amber-400 text-amber-400 hover:text-white font-semibold m-0.5"><img src="assets/images/flags/spain.png" class="h-5 w-5 me-1" alt=""> Spanish</a>
+                            <a href="" class="py-[6px] px-2 inline-flex items-center tracking-wider align-middle duration-500 text-sm text-center rounded bg-amber-400/5 hover:bg-amber-400 border border-amber-400/10 hover:border-amber-400 text-amber-400 hover:text-white font-semibold m-0.5"><img src="assets/images/flags/usa.png" class="h-5 w-5 me-1" alt=""> English</a>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Turn text into high-quality <br> voiceovers with one click</h3>
+                        <p class="text-slate-400 max-w-xl">"Usually, our colleagues don't jump in the air when they hear e-learning, but the AI videos created with Mortal.Ai have sparked motivation that we haven't seen before."</p>
+
+                        <ul class="list-none text-slate-400 mt-4">
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Digital Marketing Solutions for Tomorrow</li>
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Our Talented & Experienced Marketing Agency</li>
+                            <li class="mb-2 flex items-center"><i data-feather="check-circle" class="text-amber-400 h-5 w-5 me-2"></i> Create your own skin to match your brand</li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="" class="hover:text-amber-400 font-medium duration-500">Find Out More <i class="mdi mdi-chevron-right text-[20px] align-middle"></i></a>
+                        </div>
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid grid-cols-1 pb-6 text-center">
+                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">The right plans, <br> <span class="bg-gradient-to-br from-amber-400 to-fuchsia-600 text-transparent bg-clip-text">for the right price</span></h3>
+
+                    <p class="text-slate-400 max-w-xl mx-auto">Artificial intelligence makes it fast easy to create content for your blog, social media, website, and more!</p>
+                </div><!--end grid-->
+
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-6">
+                    <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <div class="p-6">
+                            <h5 class="text-2xl leading-normal font-semibold">Free</h5>
+                            <p class="text-slate-400 mt-2">For anyone to try AI video creation</p>
+                            <div class="flex mt-4">
+                                <span class="text-lg font-semibold">$</span>
+                                <span class="text-5xl font-semibold mb-0 ms-1">0</span>
+                            </div>
+                            <p class="text-slate-400 uppercase text-xs">per month</p>
+
+                            <div class="mt-6">
+                                <a href="" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-amber-400/5 hover:bg-amber-400 rounded border-amber-400/10 hover:border-amber-400 text-amber-400 hover:text-white">Try For Free</a>
+    
+                                <p class="text-slate-400 text-sm mt-3">No credit card required. Free 14-days trial</p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-gray-50 dark:bg-slate-800">
+                            <ul class="list-none text-slate-400">
+                               <li class="font-semibold text-slate-900 dark:text-white text-sm uppercase">Features:</li>
+                               
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">10 mins/wk</span> of AI generation</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">10 GB</span> storage</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">4 exports/wk</span> with invideo logo</li>
+                                <li class="flex items-center mt-2 text-slate-400"><i data-feather="x" class="h-[18px] w-[18px] me-2"></i> 2.5M+ standard media</li>
+                                <li class="flex items-center mt-2 text-slate-400"><i data-feather="x" class="h-[18px] w-[18px] me-2"></i> iStock</li>
+                            </ul>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <div class="p-6">
+                            <h5 class="text-2xl leading-normal font-semibold">Business</h5>
+                            <p class="text-slate-400 mt-2">For creators starting their journey</p>
+                            
+                            <div class="relative">
+                                <div class="flex mt-4">
+                                    <span class="text-lg font-semibold">$</span>
+                                    <span class="">
+                                        <input type="hidden" id="business-amount" class="form-control">
+                                        <p class="text-5xl font-semibold mb-0 ms-1" id="busi-amt"></p>
+                                        <p class="text-slate-400 uppercase text-xs">per month</p>
+                                    </span>
+                                </div>
+    
+                                <div class="relative mt-4">
+                                    <label for="business-price" class="form-label"></label>
+                                    <input id="business-price" type="range" value="20" min="20" max="200" class="w-full h-1 bg-gray-50 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer">
+                                    <span class="font-semibold text-lg absolute end-0 -top-5">
+                                        <input type="hidden" id="business-update" class="form-control">
+                                        <span class=""></span>
+                                        <p class="inline-block" id="busi-update"></p>
+                                        <span>X</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-amber-400 hover:bg-amber-500 border-amber-400 hover:border-amber-500 text-white rounded">Subscribe Now</a>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-gray-50 dark:bg-slate-800">
+                            <ul class="list-none text-slate-400">
+                               <li class="font-semibold text-slate-900 dark:text-white text-sm uppercase">Features:</li>
+                               
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">50 mins/mo</span> of AI generation</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">100 GB</span> storage</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">Unlimited</span> exports</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> Upto <span class="text-slate-900 dark:text-white mx-1 font-semibold">1</span> user</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">40/mo</span> iStock</li>
+                            </ul>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <div class="p-6">
+                            <h5 class="text-2xl leading-normal font-semibold">Professional</h5>
+                            <p class="text-slate-400 mt-2">For growing & established creators</p>
+
+                            <div class="relative">
+                                <div class="flex mt-4">
+                                    <span class="text-lg font-semibold">$</span>
+                                    <span class="">
+                                        <input type="hidden" id="professional-amount" class="form-control">
+                                        <p class="text-5xl font-semibold mb-0 ms-1" id="pro-amt"></p>
+                                        <p class="text-slate-400 uppercase text-xs">per month</p>
+                                    </span>
+                                </div>
+    
+                                <div class="relative mt-4">
+                                    <label for="professional-price" class="form-label"></label>
+                                    <input id="professional-price" type="range" value="40" min="40" max="400" class="w-full h-1 bg-gray-50 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer">
+                                    <span class="font-semibold text-lg absolute end-0 -top-5">
+                                        <input type="hidden" id="professional-update" class="form-control">
+                                        <span class=""></span>
+                                        <p class="inline-block" id="pro-update"></p>
+                                        <span>X</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-amber-400 hover:bg-amber-500 border-amber-400 hover:border-amber-500 text-white rounded">Buy Now</a>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-gray-50 dark:bg-slate-800">
+                            <ul class="list-none text-slate-400">
+                                <li class="font-semibold text-slate-900 dark:text-white text-sm uppercase">Features:</li>
+                               
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">200 mins/mo</span> of AI generation</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">400 GB</span> storage</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">Unlimited</span> exports</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> Upto <span class="text-slate-900 dark:text-white mx-1 font-semibold">1</span> user</li>
+                                <li class="flex items-center mt-2"><i data-feather="check-circle" class="text-green-600 h-[18px] w-[18px] me-2"></i> <span class="text-slate-900 dark:text-white me-1 font-semibold">160/mo</span> iStock</li>
+                            </ul>
+                        </div>
+                    </div><!--end content-->
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid lg:grid-cols-12 md:grid-cols-2 grid-cols-1 items-center md:gap-[30px]">
+                    <div class="lg:col-span-4 md:mb-0 mb-8">
+                        <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Have a question?</h3>
+
+                        <p class="text-slate-400 max-w-xl mx-auto mb-6">Artificial intelligence makes it fast easy to create content for your blog, social media, website, and more!</p>
+
+                        <a href="" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent hover:bg-amber-400 border-gray-100 dark:border-gray-800 hover:border-amber-400 dark:hover:border-amber-400 text-slate-900 dark:text-white hover:text-white rounded-md">Contact Us</a>
+                    </div>
+
+                    <div class="lg:col-span-8 md:mt-0 mt-8" id="accordion-collapse" data-accordion="collapse">
+                        <div class="relative shadow dark:shadow-gray-800 rounded-md overflow-hidden">
+                            <h2 class="text-base font-semibold" id="accordion-collapse-heading-1">
+                                <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-start" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+                                    <span>How does it generate responses?</span>
+                                    <svg data-accordion-icon class="w-4 h-4 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+                                <div class="p-5">
+                                    <p class="text-slate-400 dark:text-gray-400">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="relative shadow dark:shadow-gray-800 rounded-md overflow-hidden mt-4">
+                            <h2 class="text-base font-semibold" id="accordion-collapse-heading-2">
+                                <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-start" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
+                                    <span>Is AI copywriting more cost-effective than hiring human writers?</span>
+                                    <svg data-accordion-icon class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+                                <div class="p-5">
+                                    <p class="text-slate-400 dark:text-gray-400">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="relative shadow dark:shadow-gray-800 rounded-md overflow-hidden mt-4">
+                            <h2 class="text-base font-semibold" id="accordion-collapse-heading-3">
+                                <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-start" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">
+                                    <span>Can AI copywriting be customized to my brand and audience?</span>
+                                    <svg data-accordion-icon class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+                                <div class="p-5">
+                                    <p class="text-slate-400 dark:text-gray-400">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative shadow dark:shadow-gray-800 rounded-md overflow-hidden mt-4">
+                            <h2 class="text-base font-semibold" id="accordion-collapse-heading-4">
+                                <button type="button" class="flex justify-between items-center p-5 w-full font-medium text-start" data-accordion-target="#accordion-collapse-body-4" aria-expanded="false" aria-controls="accordion-collapse-body-4">
+                                    <span>What kind of support is available for AI copywriting tools?</span>
+                                    <svg data-accordion-icon class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div id="accordion-collapse-body-4" class="hidden" aria-labelledby="accordion-collapse-heading-4">
+                                <div class="p-5">
+                                    <p class="text-slate-400 dark:text-gray-400">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end grid-->
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid grid-cols-1 pb-6 text-center">
+                    <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Latest News</h3>
+
+                    <p class="text-slate-400 max-w-xl mx-auto">Artificial intelligence makes it fast easy to create content for your blog, social media, website, and more!</p>
+                </div><!--end grid-->
+
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-6">
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/1.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">What is Artificial Intelligence and How Does AI Work For Human</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+                    
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/2.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">Lignin and the future circular make sssay form AI support system</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+
+                    <div class="relative bg-white dark:bg-slate-900 p-4 rounded-md shadow dark:shadow-gray-700">
+                        <img src="assets/images/blog/3.jpg" class="rounded-md shadow dark:shadow-gray-700" alt="">
+                        <div class="pt-4">
+                            <div class="flex justify-between items-center">
+                                <div class="space-x-1">
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">AI</a>
+                                    <a href="" class="bg-amber-400/10 text-amber-500 dark:text-amber-400 text-[12px] font-semibold px-2.5 py-0.5 rounded h-5">Marketing</a>
+                                </div>
+
+                                <span class="flex items-center"><i data-feather="clock" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">5 min read</span></span>
+                            </div>
+
+                            <div class="mt-5">
+                                <a href="blog-detail.html" class="text-lg font-semibold hover:text-amber-400">Research Operations vs Research Is Always Essay On MasAI Theme</a>
+                            </div>
+
+                            <div class="mt-5 flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <img src="assets/images/client/01.jpg" class="h-7 w-7 rounded-full" alt="">
+                                    <a href="" class="ms-1 text-slate-400 hover:text-amber-400">Calvin Carlo</a>
+                                </span>
+
+                                <span class="flex items-center"><i data-feather="calendar" class="h-4 w-4"></i> <span class="ms-1 text-slate-400">August 24, 2023</span></span>
+                            </div>
+                        </div>
+                    </div><!--end blog content-->
+                </div><!--end grid-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- End -->
+
+        <!-- Start Footer -->
+        <div class="relative">
+            <div class="shape absolute xl:-bottom-[30px] lg:-bottom-[16px] md:-bottom-[13px] -bottom-[5px] start-0 end-0 overflow-hidden z-1 rotate-180 text-white dark:text-slate-900">
+                <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <footer class="relative bg-gray-900 overflow-hidden">
+            <span class="absolute blur-[200px] w-[300px] h-[300px] rounded-full top-0 -start-[0] bg-gradient-to-tl to-amber-400  from-fuchsia-600 z-0"></span>
+            <div class="container-fluid relative md:py-24 py-16">
+                <div class="container relative">
+                    <div class="grid grid-cols-1 text-center">
+                        <div class="">
+                            <h4 class="font-bold lg:leading-normal leading-normal text-4xl lg:text-5xl text-white tracking-normal mb-4">Start Your Free Trail.</h4>
+                            <p class="text-white/70 text-lg max-w-xl mx-auto">Artificial intelligence makes it fast easy to create content for your blog, social media, website, and more!</p>
+
+                            <div class="mt-6">
+                                <a href="" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent hover:bg-amber-400 border-gray-800 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-400 text-white rounded-md">Join Now!</a>
+                            </div>
+                        </div>
+                    </div><!--end grid-->
+                </div><!--end container-->
+            </div><!--end container fluid-->
+
+            <div class="container relative text-center">
+                <div class="grid grid-cols-1 border-t border-gray-800 dark:border-slate-800">
+                    <div class="py-[30px] px-0">
+                        <div class="grid md:grid-cols-2 items-center">
+                            <div class="md:text-start text-center">
+                                <a href="#" class="text-[22px] focus:outline-none">
+                                    <img src="assets/images/logo-light.png" class="mx-auto md:me-auto md:ms-0" alt="">
+                                </a>
+                            </div>
+
+                            <ul class="list-none footer-list md:text-end text-center mt-6 md:mt-0">
+                                <li class="inline"><a href="https://1.envato.market/mortalai" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="shopping-cart" class="h-4 w-4 align-middle" title="Buy Now"></i></a></li>
+                                <li class="inline"><a href="https://dribbble.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="dribbble" class="h-4 w-4 align-middle" title="dribbble"></i></a></li>
+                                <li class="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="linkedin" class="h-4 w-4 align-middle" title="Linkedin"></i></a></li>
+                                <li class="inline"><a href="https://www.facebook.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="facebook" class="h-4 w-4 align-middle" title="facebook"></i></a></li>
+                                <li class="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="instagram" class="h-4 w-4 align-middle" title="instagram"></i></a></li>
+                                <li class="inline"><a href="https://twitter.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="twitter" class="h-4 w-4 align-middle" title="twitter"></i></a></li>
+                                <li class="inline"><a href="mailto:support@shreethemes.in" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="mail" class="h-4 w-4 align-middle" title="email"></i></a></li>
+                                <li class="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-800 dark:border-slate-800 rounded-md hover:border-amber-400 dark:hover:border-amber-400 hover:bg-amber-400 dark:hover:bg-amber-400 text-slate-300 hover:text-white"><i data-feather="file-text" class="h-4 w-4 align-middle" title="customization"></i></a></li>
+                            </ul><!--end icon-->
+                        </div><!--end grid-->
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+
+            <div class="py-[30px] px-0 border-t border-gray-800 dark:border-slate-800">
+                <div class="container relative text-center">
+                    <div class="grid grid-cols-1">
+                        <div class="text-center">
+                            <p class="text-gray-400">© <script>document.write(new Date().getFullYear())</script> Mortal.Ai. Design with <i class="mdi mdi-heart text-orange-700"></i> by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
+                        </div>
+                    </div><!--end grid-->
+                </div><!--end container-->
+            </div>
+        </footer><!--end footer-->
+        <!-- End Footer -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded z-10 bottom-5 end-5 h-9 w-9 text-center bg-amber-400 hover:bg-amber-500 text-white leading-9 justify-center items-center duration-500"><i data-feather="arrow-up" class="h-4 w-4 stroke-[3]"></i></a>
+        <!-- Back to top -->
+
+        
+
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/js/plugins.init.js"></script>
+        <script src="assets/js/app.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>

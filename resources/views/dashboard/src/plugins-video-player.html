@@ -1,0 +1,65 @@
+{{> partials/main }}
+
+<head>
+
+    {{> partials/title-meta title="Video Player" }}
+
+    <link rel="stylesheet" href="assets/libs/plyr/plyr.css">
+
+    {{> partials/head-css }}
+
+</head>
+
+{{> partials/body }}
+
+<div class="group-data-[sidebar-size=sm]:min-h-sm group-data-[sidebar-size=sm]:relative">
+
+    {{> partials/menu }}
+
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
+
+        {{>partials/page-wrapper }}
+
+            <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+
+                {{> partials/page-title title="Video Player" pagetitle="Plugins" }}
+
+                <div>
+                    <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="mb-4 text-gray-800 text-15 dark:text-white">Preview Video Player</h6>
+                            
+                                <div class="plyr__video-embed" id="player">
+                                    <iframe src="https://www.youtube.com/embed/qYgogv4R8zg?si=_YxUDmc2fDgHyPae" allowfullscreen allowtransparency allow="autoplay"></iframe>
+                                </div>
+                            </div>
+                        </div><!--end card-->
+                    </div><!--end grid-->
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        {{> partials/footer }}
+
+    </div>
+
+</div>
+<!-- end main content -->
+
+{{> partials/customizer }}
+
+{{> partials/vendor-scripts }}
+
+<script src="assets/libs/plyr/plyr.min.js"></script>
+
+<script src="assets/js/pages/plugins-video-player.init.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.js"></script>
+    
+</body>
+
+</html>
