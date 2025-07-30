@@ -53,6 +53,8 @@
             </svg>
             <div class="sidebar-tooltip">Billing</div>
         </div>
+
+
     </nav>
 
     <!-- Settings -->
@@ -65,4 +67,21 @@
         </div>
     </div>
 </aside>
+
+<style>
+.admin-panel-item {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.admin-panel-item:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: scale(1.05);
+}
+
+.admin-panel-item svg {
+    color: white;
+}
+</style>
  

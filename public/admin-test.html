@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel Test</title>
+    
+    <!-- Tailwind CSS -->
+    <link href="dashboard/assets/css/tailwind.css" rel="stylesheet">
+    <link href="dashboard/assets/css/custom-dashboard.css" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="dashboard/assets/css/icons.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-8">Admin Panel Test</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Admin Panel Link -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Admin Panel</h2>
+                <p class="text-gray-600 mb-4">Admin paneli için aşağıdaki linki kullanın:</p>
+                <a href="/admin" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors inline-block">
+                    Admin Paneli Aç
+                </a>
+            </div>
+
+            <!-- User Panel Link -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Kullanıcı Paneli</h2>
+                <p class="text-gray-600 mb-4">Normal kullanıcı paneli için aşağıdaki linki kullanın:</p>
+                <a href="/home" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors inline-block">
+                    Kullanıcı Paneli Aç
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Özellikler</h2>
+            <ul class="space-y-2 text-gray-600">
+                <li>✅ <strong>Ayrı sidebar'lar:</strong> Admin ve kullanıcı paneli için farklı sidebar'lar</li>
+                <li>✅ <strong>Admin sidebar:</strong> Admin Dashboard, User Management, System Settings, Logs, Backup, Analytics, Security</li>
+                <li>✅ <strong>Kullanıcı sidebar:</strong> Overview, Agents, Messages, Events, Training, Billing</li>
+                <li>✅ <strong>Admin paneli sayfası:</strong> Özel admin içerikleri</li>
+                <li>✅ <strong>Kullanıcı yönetimi bölümü</strong></li>
+                <li>✅ <strong>Sistem ayarları bölümü</strong></li>
+                <li>✅ <strong>Log görüntüleme bölümü</strong></li>
+                <li>✅ <strong>Yedekleme bölümü</strong></li>
+                <li>✅ <strong>Admin badge'i</strong></li>
+                <li>✅ <strong>Panel geçiş butonları:</strong> Her iki panelde de geçiş butonları</li>
+            </ul>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Sidebar Farkları</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-purple-600 mb-2">Admin Sidebar</h3>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li>• Admin Dashboard</li>
+                        <li>• User Management</li>
+                        <li>• System Settings</li>
+                        <li>• System Logs</li>
+                        <li>• Backup & Restore</li>
+                        <li>• Analytics</li>
+                        <li>• Security</li>
+                        <li>• User Panel (geçiş)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-blue-600 mb-2">Kullanıcı Sidebar</h3>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li>• Overview</li>
+                        <li>• Agents</li>
+                        <li>• Messages</li>
+                        <li>• Events</li>
+                        <li>• Training</li>
+                        <li>• Billing</li>
+                        <li>• Settings</li>
+                        <li>• Admin Panel (header'da)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

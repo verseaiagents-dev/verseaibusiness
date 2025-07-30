@@ -78,6 +78,16 @@
                             </svg>
                             Refresh Data
                         </button>
+                        
+                        <!-- Admin Panel Button (Only for admin users) -->
+                        @if(auth()->check() && auth()->user()->role === 'admin')
+                        <a href="{{ route('admin.panel') }}" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 inline mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zM10.5 15.75l-1.5-1.5L6 15.75" />
+                            </svg>
+                            Admin Panel
+                        </a>
+                        @endif
                     </div>
                 </div>
 

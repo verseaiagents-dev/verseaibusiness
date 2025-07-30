@@ -10,6 +10,7 @@ use App\Http\Controllers\BlogViewController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\KnowledgeBaseController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,10 @@ Route::get('/blog/{slug}', [BlogViewController::class, 'show'])->name('blog.deta
 Route::get('/category/{slug}', [BlogViewController::class, 'category'])->name('blog.category');
 Route::get('/home', [DashboardController::class, 'showdashboard'])->name('dashboard')->middleware('auth');
 Route::get('/dashboard/knowledge-base/{project}', [DashboardController::class, 'knowledgeBase'])->name('knowledge-base')->middleware('auth');
+
+// Admin Routes
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.panel');
+Route::get('/admin/ai-settings', [AdminController::class, 'aiSettings'])->name('ai.settings');
 
 
 // API Routes for Blog
