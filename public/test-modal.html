@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Test</title>
+    
+    <!-- Tailwind CSS -->
+    <link href="dashboard/assets/css/tailwind.css" rel="stylesheet">
+    <link href="dashboard/assets/css/custom-dashboard.css" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="dashboard/assets/css/icons.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-8">Modal Test</h1>
+        
+        <!-- Test Button -->
+        <button id="testModalBtn" data-modal-target="testModal" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            Open Test Modal
+        </button>
+    </div>
+
+    <!-- Test Modal -->
+    <div id="testModal" class="fixed inset-0 bg-black bg-opacity-50 hidden modal-overlay" style="z-index: 99999;">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl modal-content" style="z-index: 100000;">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-6 border-b border-gray-200 flex-shrink-0">
+                    <h3 class="text-lg font-semibold text-gray-900">Test Modal</h3>
+                    <button id="closeTestModalBtn" data-modal-close="testModal" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">This is a test modal to verify that the close buttons are working.</p>
+                    <p class="text-gray-600">Click the X button or the Cancel button to close this modal.</p>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="flex items-center justify-end space-x-3 p-6 border-t border-gray-200 bg-white flex-shrink-0">
+                    <button type="button" id="cancelTestBtn" data-modal-close="testModal"
+                        class="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="button" id="confirmTestBtn"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="dashboard/assets/js/tailwick.bundle.js"></script>
+    <script src="dashboard/assets/js/app.js"></script>
+    
+    <script>
+        // Test script
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Test page loaded');
+            
+            // Check if modal buttons exist
+            const openBtn = document.getElementById('testModalBtn');
+            const closeBtn = document.getElementById('closeTestModalBtn');
+            const cancelBtn = document.getElementById('cancelTestBtn');
+            
+            console.log('Open button:', openBtn);
+            console.log('Close button:', closeBtn);
+            console.log('Cancel button:', cancelBtn);
+            
+            // Check if global modal system is working
+            setTimeout(() => {
+                const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
+                console.log('Global modal close buttons found:', modalCloseButtons.length);
+                modalCloseButtons.forEach(btn => {
+                    console.log('Modal close button:', btn.id, btn.getAttribute('data-modal-close'));
+                });
+                
+                const modalTargetButtons = document.querySelectorAll('[data-modal-target]');
+                console.log('Global modal target buttons found:', modalTargetButtons.length);
+                modalTargetButtons.forEach(btn => {
+                    console.log('Modal target button:', btn.id, btn.getAttribute('data-modal-target'));
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

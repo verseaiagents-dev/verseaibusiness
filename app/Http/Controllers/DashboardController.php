@@ -180,4 +180,32 @@ public function showdashboard(){
             'data' => $activities
         ]);
     }
+
+    /**
+     * Show knowledge base for a specific project.
+     *
+     * @param \App\Models\Project $project
+     * @return \Illuminate\View\View
+     */
+    public function knowledgeBase($project)
+    {
+        $user = Auth::user();
+        
+        // Check if project belongs to user
+        $project = $user->projects()->findOrFail($project);
+        
+        // Get knowledge base documents
+        $documents = $project->knowledgeBase()->latest()->get();
+        $totalDocuments = $documents->count();
+        $lastUpdated = $documents->first() ? $documents->first()->updated_at : null;
+        
+        $knowledgeBaseData = [
+            'project' => $project,
+            'documents' => $documents,
+            'total_documents' => $totalDocuments,
+            'last_updated' => $lastUpdated
+        ];
+
+        return view('dashboard.knowledge-base', compact('knowledgeBaseData'));
+    }
 }

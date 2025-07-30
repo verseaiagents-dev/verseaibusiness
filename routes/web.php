@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogCommentController;
 use App\Http\Controllers\BlogViewController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\KnowledgeBaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,7 @@ Route::get('/blog', [BlogViewController::class, 'index'])->name('blog');
 Route::get('/blog/{slug}', [BlogViewController::class, 'show'])->name('blog.detail');
 Route::get('/category/{slug}', [BlogViewController::class, 'category'])->name('blog.category');
 Route::get('/home', [DashboardController::class, 'showdashboard'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard/knowledge-base/{project}', [DashboardController::class, 'knowledgeBase'])->name('knowledge-base')->middleware('auth');
 
 
 // API Routes for Blog
@@ -90,6 +93,21 @@ Route::prefix('api')->group(function () {
         // Comment Moderation
         Route::patch('/comments/{blogComment}/approve', [BlogCommentController::class, 'approve'])->name('api.comments.approve');
         Route::patch('/comments/{blogComment}/spam', [BlogCommentController::class, 'markAsSpam'])->name('api.comments.spam');
+        
+        // Projects (CRUD)
+        Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.index');
+        Route::post('/projects', [ProjectController::class, 'store'])->name('api.projects.store');
+        Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('api.projects.show');
+        Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('api.projects.update');
+        Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('api.projects.destroy');
+        Route::get('/projects/user/info', [ProjectController::class, 'getUserInfo'])->name('api.projects.user-info');
+        
+        // Knowledge Base Routes
+        Route::get('/projects/{project}/knowledge-base', [KnowledgeBaseController::class, 'index'])->name('api.knowledge-base.index');
+        Route::post('/projects/{project}/knowledge-base', [KnowledgeBaseController::class, 'store'])->name('api.knowledge-base.store');
+        Route::get('/projects/{project}/knowledge-base/{knowledgeBase}', [KnowledgeBaseController::class, 'show'])->name('api.knowledge-base.show');
+        Route::delete('/projects/{project}/knowledge-base/{knowledgeBase}', [KnowledgeBaseController::class, 'destroy'])->name('api.knowledge-base.destroy');
+        Route::get('/projects/{project}/knowledge-base/{knowledgeBase}/download', [KnowledgeBaseController::class, 'download'])->name('api.knowledge-base.download');
     });
     
     // Public comment creation (for guest users)

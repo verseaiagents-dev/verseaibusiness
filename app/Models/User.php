@@ -92,4 +92,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(BlogComment::class);
     }
+
+    /**
+     * Get the projects for the user.
+     */
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class);
+    }
 }
