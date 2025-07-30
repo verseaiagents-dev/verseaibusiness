@@ -56,6 +56,12 @@ Route::get('/dashboard/knowledge-base/{project}', [DashboardController::class, '
 // Admin Routes
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.panel');
 Route::get('/admin/ai-settings', [AdminController::class, 'aiSettings'])->name('ai.settings');
+Route::get('/admin/user-management', [AdminController::class, 'userManagement'])->name('admin.user-management');
+Route::get('/admin/system-logs', [AdminController::class, 'systemLogs'])->name('admin.system-logs');
+Route::get('/admin/backup', [AdminController::class, 'backup'])->name('admin.backup');
+Route::get('/admin/analytics', [AdminController::class, 'analytics'])->name('admin.analytics');
+Route::get('/admin/security', [AdminController::class, 'security'])->name('admin.security');
+Route::get('/admin/settings', [AdminController::class, 'adminSettings'])->name('admin.settings');
 
 
 // API Routes for Blog

@@ -68,15 +68,15 @@
             <div class="dashboard-content">
                 <div class="flex items-center justify-between mb-6">
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-900">Son Durum</h1>
-                        <p class="text-gray-600 mt-1">Welcome to your VersAI dashboard</p>
+                        <h1 class="text-3xl font-bold text-gray-900">{{ __('admin.dashboard_title') }}</h1>
+                        <p class="text-gray-600 mt-1">{{ __('admin.dashboard_description') }}</p>
                     </div>
                     <div class="flex items-center space-x-4">
                         <button id="refreshBtn" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 inline mr-2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                             </svg>
-                            Refresh Data
+                            {{ __('admin.refresh_data') }}
                         </button>
                         
                         <!-- Admin Panel Button (Only for admin users) -->
@@ -85,7 +85,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 inline mr-2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zM10.5 15.75l-1.5-1.5L6 15.75" />
                             </svg>
-                            Admin Panel
+                            {{ __('admin.admin_panel') }}
                         </a>
                         @endif
                     </div>
@@ -95,7 +95,7 @@
                 <div id="loadingIndicator" class="hidden mb-6">
                     <div class="flex items-center justify-center p-4 bg-blue-50 rounded-lg">
                         <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mr-3"></div>
-                        <span class="text-blue-600 font-medium">Loading dashboard data...</span>
+                        <span class="text-blue-600 font-medium">{{ __('admin.loading_dashboard') }}</span>
                     </div>
                 </div>
 

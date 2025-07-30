@@ -34,15 +34,15 @@
                 <!-- Header -->
                 <div class="flex items-center justify-between mb-6">
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-900">Knowledge Base</h1>
-                        <p class="text-gray-600 mt-1">{{ $knowledgeBaseData['project']->name }} projesi için öğretilen veriler</p>
+                        <h1 class="text-3xl font-bold text-gray-900">{{ __('admin.knowledge_base') }}</h1>
+                        <p class="text-gray-600 mt-1">{{ $knowledgeBaseData['project']->name }} {{ __('admin.knowledge_base_description') }}</p>
                     </div>
                     <div class="flex items-center space-x-4">
                         <a href="{{ route('dashboard') }}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 inline mr-2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg>
-                            Geri Dön
+                            {{ __('admin.back_to_dashboard') }}
                         </a>
 
                     </div>
@@ -53,7 +53,7 @@
                     <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-blue-100">Toplam Belge</p>
+                                <p class="text-blue-100">{{ __('admin.total_documents') }}</p>
                                 <p class="text-3xl font-bold">{{ $knowledgeBaseData['total_documents'] }}</p>
                             </div>
                             <div class="bg-blue-400 rounded-lg p-3">
@@ -67,7 +67,7 @@
                     <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-green-100">Son Güncelleme</p>
+                                <p class="text-green-100">{{ __('admin.last_update') }}</p>
                                 <p class="text-3xl font-bold">{{ $knowledgeBaseData['last_updated'] ? \Carbon\Carbon::parse($knowledgeBaseData['last_updated'])->format('d/m') : '--' }}</p>
                             </div>
                             <div class="bg-green-400 rounded-lg p-3">
@@ -81,7 +81,7 @@
                     <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-purple-100">Proje Durumu</p>
+                                <p class="text-purple-100">{{ __('admin.project_status') }}</p>
                                 <p class="text-3xl font-bold">{{ ucfirst($knowledgeBaseData['project']->status) }}</p>
                             </div>
                             <div class="bg-purple-400 rounded-lg p-3">
@@ -97,7 +97,7 @@
                 <div class="dashboard-content">
                     <div class="flex items-center justify-between mb-6">
                         <div>
-                            <h2 class="text-2xl font-bold text-gray-900">Öğretilen Veriler</h2>
+                            <h2 class="text-2xl font-bold text-gray-900">{{ __('admin.trained_data') }}</h2>
                             <p class="text-gray-600 mt-1">Projenize yüklenen belgeler ve öğretilen bilgiler</p>
                         </div>
                     </div>
