@@ -7,20 +7,20 @@
     <!-- Navigation Menu -->
     <nav class="sidebar-nav">
         <!-- Overview -->
-        <div class="sidebar-nav-item active" title="{{ __('admin.overview') }}">
+        <a href="{{ route('dashboard') }}" class="sidebar-nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}" title="{{ __('admin.overview') }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M4.5 10.5v9a1.5 1.5 0 001.5 1.5h12a1.5 1.5 0 001.5-1.5v-9" />
             </svg>
             <div class="sidebar-tooltip">{{ __('admin.overview') }}</div>
-        </div>
+        </a>
 
         <!-- Agents -->
-        <div class="sidebar-nav-item" title="{{ __('admin.agents') }}">
+        <a href="{{ route('user.intents.index') }}" class="sidebar-nav-item {{ request()->routeIs('user.intents.*') ? 'active' : '' }}" title="{{ __('admin.agents') }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-1a7 7 0 00-7-7H9a7 7 0 00-7 7v1h5m4-5a4 4 0 100-8 4 4 0 000 8z" />
             </svg>
             <div class="sidebar-tooltip">{{ __('admin.agents') }}</div>
-        </div>
+        </a>
 
         <!-- Messages -->
         <div class="sidebar-nav-item" title="{{ __('admin.messages') }}">
@@ -45,6 +45,22 @@
             </svg>
             <div class="sidebar-tooltip">{{ __('admin.training') }}</div>
         </div>
+
+        <!-- Intent Management -->
+        <a href="{{ route('user.intents.index') }}" class="sidebar-nav-item {{ request()->routeIs('user.intents.*') ? 'active' : '' }}" title="Niyet Yönetimi">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <div class="sidebar-tooltip">Niyet Yönetimi</div>
+        </a>
+
+        <!-- API Event Management -->
+        <a href="{{ route('user.api-events.index') }}" class="sidebar-nav-item {{ request()->routeIs('user.api-events.*') ? 'active' : '' }}" title="API Event Yönetimi">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <div class="sidebar-tooltip">API Event Yönetimi</div>
+        </a>
 
         <!-- Billing -->
         <div class="sidebar-nav-item" title="{{ __('admin.billing') }}">

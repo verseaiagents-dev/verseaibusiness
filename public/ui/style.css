@@ -1,0 +1,369 @@
+/* ... Önceki CSS kodları ... */
+
+/* Products Scroll Container */
+.products-scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px 0;
+    margin: 15px 0;
+    -webkit-overflow-scrolling: touch; /* iOS için düzgün kaydırma */
+    scrollbar-width: thin; /* Firefox için ince scrollbar */
+    scrollbar-color: var(--primary-color) var(--bg-color); /* Firefox için scrollbar rengi */
+}
+
+/* Webkit (Chrome, Safari) için scrollbar stilleri */
+.products-scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.products-scroll-container::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-radius: 3px;
+}
+
+.products-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+.products-wrapper {
+    display: flex;
+    gap: 15px;
+    padding: 5px;
+}
+
+.product-card {
+    flex: 0 0 200px; /* Sabit genişlik */
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 12px;
+}
+
+.product-info h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.product-price {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.product-button {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.product-button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Mevcut CSS kodları buraya eklenecek */
+:root {
+    --primary-color: #2563EB;
+    --text-color: #1F2937;
+    --bg-color: #F9FAFB;
+    --border-color: #E5E7EB;
+    --hover-color: #1D4ED8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.chat-container {
+    max-width: 480px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header Styles */
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.agent-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.header-right {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Chat Content Styles */
+.chat-content {
+    padding: 20px;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.message-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.message-group.user {
+    justify-content: flex-end;
+}
+
+.agent-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.agent-avatar.small {
+    width: 30px;
+    height: 30px;
+}
+
+.agent-avatar.large {
+    width: 60px;
+    height: 60px;
+}
+
+.agent-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.message {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 12px;
+}
+
+.agent-message {
+    background-color: var(--bg-color);
+}
+
+.user-message {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Guide Card Styles */
+.guide-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.feature-card {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.feature-content h4 {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.feature-content p {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+}
+
+.ai-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #6B7280;
+    margin: 12px 0;
+}
+
+.ai-icon {
+    background: #374151;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.message-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #6B7280;
+    transition: background-color 0.2s;
+}
+
+.action-button:hover {
+    background-color: var(--bg-color);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.secondary-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.secondary-button:hover {
+    background-color: var(--border-color);
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+#messageInput {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+#messageInput:focus {
+    border-color: var(--primary-color);
+}
+
+.voice-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.voice-button:hover {
+    background-color: var(--bg-color);
+}
+
+/* Footer */
+.chat-footer {
+    padding: 12px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6B7280;
+    border-top: 1px solid var(--border-color);
+}
+
+.separator {
+    margin: 0 8px;
+}
+
+.privacy-link {
+    color: #6B7280;
+    text-decoration: none;
+}
+
+.privacy-link:hover {
+    text-decoration: underline;
+}

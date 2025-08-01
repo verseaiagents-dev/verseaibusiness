@@ -52,6 +52,175 @@
     color: rgba(168, 85, 247, 0.1) !important;
 }
 
+.text-purple-200 {
+    color: rgba(168, 85, 247, 0.2) !important;
+}
+
+.text-purple-50 {
+    color: rgba(168, 85, 247, 0.5) !important;
+}
+
+.text-blue-50 {
+    color: rgba(59, 130, 246, 0.5) !important;
+}
+
+.text-green-50 {
+    color: rgba(34, 197, 94, 0.5) !important;
+}
+
+.text-sm {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+}
+
+.font-medium {
+    font-weight: 500 !important;
+}
+
+/* Grid Layout Classes */
+.grid {
+    display: grid !important;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.gap-6 {
+    gap: 1.5rem !important;
+}
+
+.mb-8 {
+    margin-bottom: 2rem !important;
+}
+
+/* Responsive Grid */
+@media (min-width: 768px) {
+    .md\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Flexbox Classes */
+.flex {
+    display: flex !important;
+}
+
+.flex-col {
+    flex-direction: column !important;
+}
+
+.flex-row {
+    flex-direction: row !important;
+}
+
+@media (min-width: 768px) {
+    .md\:flex-row {
+        flex-direction: row !important;
+    }
+    
+    .md\:flex-col {
+        flex-direction: column !important;
+    }
+}
+
+.flex-1 {
+    flex: 1 1 0% !important;
+}
+
+/* Modal Classes */
+.fixed {
+    position: fixed !important;
+}
+
+.inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+}
+
+.bg-opacity-50 {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.max-w-md {
+    max-width: 28rem !important;
+}
+
+.max-h-\[90vh\] {
+    max-height: 90vh !important;
+}
+
+.overflow-y-auto {
+    overflow-y: auto !important;
+}
+
+.space-y-4 > * + * {
+    margin-top: 1rem !important;
+}
+
+.space-x-3 > * + * {
+    margin-left: 0.75rem !important;
+}
+
+/* Form Classes */
+.block {
+    display: block !important;
+}
+
+.w-full {
+    width: 100% !important;
+}
+
+.px-3 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
+
+.py-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.border-gray-300 {
+    border-color: #d1d5db !important;
+}
+
+.focus\:ring-2:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
+}
+
+.focus\:ring-blue-500:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
+}
+
+.focus\:border-blue-500:focus {
+    border-color: #3b82f6 !important;
+}
+
+.hover\:bg-gray-50:hover {
+    background-color: #f9fafb !important;
+}
+
+.hover\:bg-blue-700:hover {
+    background-color: #1d4ed8 !important;
+}
+
+.opacity-80 {
+    opacity: 0.8 !important;
+}
+
 .text-orange-100 {
     color: rgba(249, 115, 22, 0.1) !important;
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Base - {{ $knowledgeBaseData['project']->name }}</title>
+    <title>{{ __('admin.knowledge_base') }} - {{ $knowledgeBaseData['project']->name }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- Tailwind CSS -->
@@ -13,8 +13,8 @@
     <!-- Icons -->
     <link href="{{ asset('dashboard/assets/css/icons.css') }}" rel="stylesheet">
     
-    <!-- Custom Dashboard CSS -->
-    <link href="{{ asset('dashboard/assets/css/custom-dashboard.css') }}" rel="stylesheet">
+    <!-- Tailwind CSS Fixes - Load last to ensure proper color preservation -->
+    <link href="{{ asset('dashboard/assets/css/tailwind-fixes.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
     <div class="dashboard-layout">
@@ -44,16 +44,15 @@
                             </svg>
                             {{ __('admin.back_to_dashboard') }}
                         </a>
-
                     </div>
                 </div>
 
                 <!-- Knowledge Base Stats -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white">
+                <div class="flex flex-col md:flex-row gap-6 mb-8">
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white flex-1">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-blue-100">{{ __('admin.total_documents') }}</p>
+                                <p class="text-white text-sm font-medium">{{ __('admin.total_documents') }}</p>
                                 <p class="text-3xl font-bold">{{ $knowledgeBaseData['total_documents'] }}</p>
                             </div>
                             <div class="bg-blue-400 rounded-lg p-3">
@@ -64,10 +63,10 @@
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white">
+                    <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white flex-1">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-green-100">{{ __('admin.last_update') }}</p>
+                                <p class="text-white text-sm font-medium">{{ __('admin.last_update') }}</p>
                                 <p class="text-3xl font-bold">{{ $knowledgeBaseData['last_updated'] ? \Carbon\Carbon::parse($knowledgeBaseData['last_updated'])->format('d/m') : '--' }}</p>
                             </div>
                             <div class="bg-green-400 rounded-lg p-3">
@@ -78,10 +77,10 @@
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white">
+                    <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white flex-1">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-purple-100">{{ __('admin.project_status') }}</p>
+                                <p class="text-white text-sm font-medium">{{ __('admin.project_status') }}</p>
                                 <p class="text-3xl font-bold">{{ ucfirst($knowledgeBaseData['project']->status) }}</p>
                             </div>
                             <div class="bg-purple-400 rounded-lg p-3">
@@ -95,13 +94,106 @@
 
                 <!-- Knowledge Base Content -->
                 <div class="dashboard-content">
-                    <div class="flex items-center justify-between mb-6">
-                        <div>
-                            <h2 class="text-2xl font-bold text-gray-900">{{ __('admin.trained_data') }}</h2>
-                            <p class="text-gray-600 mt-1">Projenize yüklenen belgeler ve öğretilen bilgiler</p>
+                  
+
+                    <!-- Import Options Section -->
+                    <div class="mb-8">
+                         <h2 class="text-2xl font-bold text-gray-900">{{ __('admin.importoptions') }}</h2>
+
+
+                        <div class="flex flex-col gap-4">
+                            <!-- First Row -->
+                            <div class="flex flex-row gap-4">
+                                <!-- CSV Import -->
+                                <div class="flex-1 bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer" onclick="knowledgeBaseManager.openImportModal('csv')">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="bg-blue-100 rounded-lg p-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-600">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full">CSV</span>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">CSV Import</h4>
+                                    <p class="text-sm text-gray-600">Import structured data from CSV files to your knowledge base.</p>
+                                </div>
+                                <!-- PDF Import -->
+                                <div class="flex-1 bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer" onclick="knowledgeBaseManager.openImportModal('pdf')">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="bg-red-100 rounded-lg p-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-600">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-xs font-medium text-red-600 bg-red-50 px-2 py-1 rounded-full">PDF</span>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">PDF Import</h4>
+                                    <p class="text-sm text-gray-600">Import knowledge from PDF documents and extract text content.</p>
+                                </div>
+                                <!-- XML Import -->
+                                <div class="flex-1 bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer" onclick="knowledgeBaseManager.openImportModal('xml')">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="bg-green-100 rounded-lg p-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-600">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">XML</span>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">XML Import</h4>
+                                    <p class="text-sm text-gray-600">Import structured data from XML files and sitemaps.</p>
+                                </div>
+                            </div>
+                            <!-- Second Row -->
+                            <div class="flex flex-row gap-4">
+                                <!-- Sitemap Import -->
+                                <div class="flex-1 bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer" onclick="knowledgeBaseManager.openImportModal('sitemap')">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="bg-purple-100 rounded-lg p-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-600">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.959 8.959 0 018.716 6.747M12 3a8.959 8.959 0 00-8.716 6.747" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded-full">Sitemap</span>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Sitemap Import</h4>
+                                    <p class="text-sm text-gray-600">Import content from website sitemaps automatically.</p>
+                                </div>
+                                <!-- Website Scraping -->
+                                <div class="flex-1 bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer" onclick="knowledgeBaseManager.openImportModal('scraping')">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="bg-orange-100 rounded-lg p-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-orange-600">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.959 8.959 0 018.716 6.747M12 3a8.959 8.959 0 00-8.716 6.747" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-xs font-medium text-orange-600 bg-orange-50 px-2 py-1 rounded-full">Scraping</span>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Website Scraping</h4>
+                                    <p class="text-sm text-gray-600">Scrape content from websites and import to knowledge base.</p>
+                                </div>
+                                <!-- URL Import -->
+                                <div class="flex-1 bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer" onclick="knowledgeBaseManager.openImportModal('url')">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="bg-indigo-100 rounded-lg p-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-indigo-600">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">URL</span>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">URL Import</h4>
+                                    <p class="text-sm text-gray-600">Import content from specific URLs and web pages.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
+                    <div class="flex items-center justify-between mb-6">
+                         <div>
+                             <h2 class="text-2xl font-bold text-gray-900">{{ __('admin.trained_data') }}</h2>
+                             <p class="text-gray-600 mt-1">{{ __('admin.trained_data_description') }}</p>
+                         </div>
+                     </div>
                     @if($knowledgeBaseData['total_documents'] > 0)
                         <!-- Documents List -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -131,18 +223,64 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="text-sm text-gray-600 mb-4">
-                                        <p><strong>Tür:</strong> {{ strtoupper(pathinfo($document->file_name, PATHINFO_EXTENSION)) }}</p>
-                                        <p><strong>Yüklenme:</strong> {{ $document->created_at->format('d.m.Y H:i') }}</p>
+                                    
+                                    <!-- AI Processing Status -->
+                                    <div class="mb-4">
+                                        @if($document->ai_processing_status)
+                                            <div class="flex items-center space-x-2 mb-2">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                                                    @if($document->ai_processing_status === 'completed') bg-green-100 text-green-800
+                                                    @elseif($document->ai_processing_status === 'processing') bg-yellow-100 text-yellow-800
+                                                    @elseif($document->ai_processing_status === 'failed') bg-red-100 text-red-800
+                                                    @else bg-gray-100 text-gray-800 @endif">
+                                                    AI: {{ ucfirst($document->ai_processing_status) }}
+                                                </span>
+                                            </div>
+                                            
+                                            @if($document->ai_processing_status === 'completed' && $document->ai_summary)
+                                                <div class="bg-gray-50 rounded-lg p-3 mb-3">
+                                                    <p class="text-sm text-gray-700 font-medium mb-1">AI Özeti:</p>
+                                                    <p class="text-xs text-gray-600">{{ $document->getShortSummary(150) }}</p>
+                                                </div>
+                                            @endif
+                                            
+                                            @if($document->ai_categories && count($document->ai_categories) > 0)
+                                                <div class="flex flex-wrap gap-1 mb-3">
+                                                    @foreach(array_slice($document->ai_categories, 0, 3) as $category)
+                                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                                            {{ $category }}
+                                                        </span>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        @endif
                                     </div>
+                                    
+                                    <div class="text-sm text-gray-600 mb-4">
+                                        <p><strong>{{ __('admin.document_type') }}:</strong> {{ strtoupper(pathinfo($document->file_name, PATHINFO_EXTENSION)) }}</p>
+                                        <p><strong>{{ __('admin.upload_date') }}:</strong> {{ $document->created_at->format('d.m.Y H:i') }}</p>
+                                    </div>
+                                    
                                     <div class="flex items-center justify-between">
-                                        <button onclick="knowledgeBaseManager.downloadDocument({{ $document->id }})" 
-                                            class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center">
-                                            İndir
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                                            </svg>
-                                        </button>
+                                        <div class="flex space-x-2">
+                                            <button onclick="knowledgeBaseManager.downloadDocument({{ $document->id }})" 
+                                                class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center">
+                                                {{ __('admin.download') }}
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                                </svg>
+                                            </button>
+                                            
+                                            @if($document->ai_processing_status !== 'completed' && $document->ai_processing_status !== 'processing')
+                                                <button onclick="knowledgeBaseManager.processWithAi({{ $document->id }})" 
+                                                    class="text-purple-600 hover:text-purple-800 text-sm font-medium flex items-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423L16.5 15.75l.394 1.183a2.25 2.25 0 001.423 1.423L19.5 18.75l-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                                                    </svg>
+                                                    AI İşle
+                                                </button>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
@@ -153,17 +291,14 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto text-gray-400 mb-4">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                             </svg>
-                            <h3 class="text-lg font-medium text-gray-900 mb-2">Henüz belge yüklenmedi</h3>
-                            <p class="text-gray-600 mb-4">Projenize belge yükleyerek AI modelini eğitmeye başlayın</p>
-
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">{{ __('admin.no_documents_uploaded') }}</h3>
+                            <p class="text-gray-600 mb-4">{{ __('admin.no_documents_description') }}</p>
                         </div>
                     @endif
                 </div>
             </div>
         </main>
     </div>
-
-
 
     <!-- JavaScript -->
     <script>
@@ -179,8 +314,6 @@
             bindEvents() {
                 // No modal events needed
             }
-
-
 
             showSuccess(message) {
                 const successDiv = document.createElement('div');
@@ -207,7 +340,7 @@
             }
 
             async deleteDocument(documentId) {
-                if (!confirm('Bu belgeyi silmek istediğinizden emin misiniz?')) {
+                if (!confirm('{{ __("admin.confirm_delete_document") }}')) {
                     return;
                 }
 
@@ -225,16 +358,16 @@
                     const data = await response.json();
 
                     if (data.success) {
-                        this.showSuccess('Belge başarıyla silindi!');
+                        this.showSuccess('{{ __("admin.document_deleted_successfully") }}');
                         setTimeout(() => {
                             window.location.reload();
                         }, 1500);
                     } else {
-                        this.showError(data.message || 'Belge silinemedi.');
+                        this.showError(data.message || '{{ __("admin.document_deletion_failed") }}');
                     }
                 } catch (error) {
                     console.error('Error deleting document:', error);
-                    this.showError('Belge silinirken bir hata oluştu.');
+                    this.showError('{{ __("admin.document_deletion_error") }}');
                 }
             }
 
@@ -261,11 +394,167 @@
                         link.click();
                         document.body.removeChild(link);
                     } else {
-                        this.showError(data.message || 'Belge indirilemedi.');
+                        this.showError(data.message || '{{ __("admin.document_download_failed") }}');
                     }
                 } catch (error) {
                     console.error('Error downloading document:', error);
-                    this.showError('Belge indirilirken bir hata oluştu.');
+                    this.showError('{{ __("admin.document_download_error") }}');
+                }
+            }
+
+            async processWithAi(documentId) {
+                const projectId = window.location.pathname.split('/').pop();
+
+                try {
+                    // Show processing indicator
+                    this.showSuccess('AI işleme başlatılıyor...');
+
+                    const response = await fetch(`/api/projects/${projectId}/knowledge-base/${documentId}/process-ai`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.showSuccess('AI işleme başarıyla tamamlandı!');
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                    } else {
+                        this.showError(data.message || 'AI işleme başarısız');
+                    }
+                } catch (error) {
+                    console.error('Error processing with AI:', error);
+                    this.showError('AI işleme sırasında hata oluştu');
+                }
+            }
+
+            openImportModal(type) {
+                const projectId = window.location.pathname.split('/').pop();
+                const modal = this.createImportModal(type, projectId);
+                document.body.appendChild(modal);
+            }
+
+            createImportModal(type, projectId) {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Import ${type.toUpperCase()}</h3>
+                                <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <form id="importForm" class="space-y-4">
+                                ${this.getImportFormFields(type)}
+                                <div class="flex justify-end space-x-3 pt-4">
+                                    <button type="button" onclick="this.closest('.fixed').remove()" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
+                                        Cancel
+                                    </button>
+                                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                        Import
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+
+                // Add form submit handler
+                const form = modal.querySelector('#importForm');
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleImportSubmit(type, projectId, form);
+                });
+
+                return modal;
+            }
+
+            getImportFormFields(type) {
+                const fields = {
+                    csv: `
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">CSV File</label>
+                            <input type="file" name="file" accept=".csv" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    `,
+                    pdf: `
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">PDF File</label>
+                            <input type="file" name="file" accept=".pdf" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    `,
+                    xml: `
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">XML File</label>
+                            <input type="file" name="file" accept=".xml" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    `,
+                    sitemap: `
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Sitemap URL</label>
+                            <input type="url" name="sitemap_url" placeholder="https://example.com/sitemap.xml" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    `,
+                    scraping: `
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Website URL</label>
+                            <input type="url" name="website_url" placeholder="https://example.com" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Max Pages</label>
+                            <input type="number" name="max_pages" value="10" min="1" max="100" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    `,
+                    url: `
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">URL</label>
+                            <input type="url" name="url" placeholder="https://example.com/page" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    `
+                };
+                return fields[type] || '';
+            }
+
+            async handleImportSubmit(type, projectId, form) {
+                const formData = new FormData(form);
+                formData.append('type', type);
+
+                try {
+                    const response = await fetch(`/api/projects/${projectId}/knowledge-base/import`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        },
+                        body: formData
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.showSuccess('Import başarıyla tamamlandı!');
+                        form.closest('.fixed').remove();
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                    } else {
+                        let errorMessage = data.message || 'Import başarısız';
+                        if (data.errors) {
+                            errorMessage += ': ' + Object.values(data.errors).flat().join(', ');
+                        }
+                        this.showError(errorMessage);
+                    }
+                } catch (error) {
+                    console.error('Error importing:', error);
+                    this.showError('Import sırasında hata oluştu: ' + error.message);
                 }
             }
         }

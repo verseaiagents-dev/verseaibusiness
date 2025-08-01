@@ -1,7 +1,7 @@
 <aside class="dashboard-sidebar">
     <!-- Logo -->
     <div class="sidebar-logo">
-        <span>A</span>
+        <span>V</span>
     </div>
 
     <!-- Navigation Menu -->
@@ -30,20 +30,12 @@
             <div class="sidebar-tooltip">{{ __('admin.ai_settings') }}</div>
         </a>
 
-        <!-- Logs -->
-        <a href="{{ route('admin.system-logs') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('admin.system-logs') ? 'active' : '' }}" title="{{ __('admin.system_logs') }}">
+        <!-- Intent Management -->
+        <a href="{{ route('user.intents.index') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('user.intents.*') ? 'active' : '' }}" title="Niyet Yönetimi">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <div class="sidebar-tooltip">{{ __('admin.system_logs') }}</div>
-        </a>
-
-        <!-- Backup -->
-        <a href="{{ route('admin.backup') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('admin.backup') ? 'active' : '' }}" title="{{ __('admin.backup') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-            </svg>
-            <div class="sidebar-tooltip">{{ __('admin.backup') }}</div>
+            <div class="sidebar-tooltip">Niyet Yönetimi</div>
         </a>
 
         <!-- Analytics -->
@@ -52,14 +44,6 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
             </svg>
             <div class="sidebar-tooltip">{{ __('admin.analytics') }}</div>
-        </a>
-
-        <!-- Security -->
-        <a href="{{ route('admin.security') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('admin.security') ? 'active' : '' }}" title="{{ __('admin.security') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zM10.5 15.75l-1.5-1.5L6 15.75" />
-            </svg>
-            <div class="sidebar-tooltip">{{ __('admin.security') }}</div>
         </a>
 
         <!-- Admin Settings -->
@@ -79,6 +63,14 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
             </svg>
             <div class="sidebar-tooltip">{{ __('admin.user_panel') }}</div>
+        </div>
+        
+        <!-- Switch to Admin Panel -->
+        <div class="sidebar-nav-item admin-switch-item" title="Admin Panel" onclick="window.location.href='{{ route('admin.panel') }}'">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+            <div class="sidebar-tooltip">Admin Panel</div>
         </div>
     </div>
 </aside>

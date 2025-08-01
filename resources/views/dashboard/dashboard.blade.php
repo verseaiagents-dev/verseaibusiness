@@ -104,7 +104,7 @@
                     <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-blue-100">Total Agents</p>
+                                <p class="text-blue-100">{{ __('admin.total_agents') }}</p>
                                 <p id="totalAgents" class="text-3xl font-bold">--</p>
                             </div>
                             <div class="bg-blue-400 rounded-lg p-3">
@@ -118,7 +118,7 @@
                     <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-green-100">Active Sessions</p>
+                                <p class="text-green-100">{{ __('admin.active_sessions') }}</p>
                                 <p id="activeSessions" class="text-3xl font-bold">--</p>
                             </div>
                             <div class="bg-green-400 rounded-lg p-3">
@@ -132,7 +132,7 @@
                     <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-purple-100">Messages Today</p>
+                                <p class="text-purple-100">{{ __('admin.messages_today') }}</p>
                                 <p id="messagesToday" class="text-3xl font-bold">--</p>
                             </div>
                             <div class="bg-purple-400 rounded-lg p-3">
@@ -146,7 +146,7 @@
                     <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-orange-100">API Calls</p>
+                                <p class="text-orange-100">{{ __('admin.api_calls') }}</p>
                                 <p id="apiCalls" class="text-3xl font-bold">--</p>
                             </div>
                             <div class="bg-orange-400 rounded-lg p-3">
@@ -162,14 +162,14 @@
                 <div class="dashboard-content">
                     <div class="flex items-center justify-between mb-6">
                         <div>
-                            <h2 class="text-2xl font-bold text-gray-900">Projelerim</h2>
-                            <p class="text-gray-600 mt-1">Oluşturduğunuz projeleri yönetin</p>
+                            <h2 class="text-2xl font-bold text-gray-900">{{ __('admin.my_projects') }}</h2>
+                            <p class="text-gray-600 mt-1">{{ __('admin.manage_projects') }}</p>
                         </div>
                         <button id="newProjectBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 inline mr-2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
-                            Yeni Proje
+                            {{ __('admin.new_project') }}
                         </button>
                     </div>
 
@@ -177,7 +177,7 @@
                     <div id="projectsLoading" class="hidden mb-6">
                         <div class="flex items-center justify-center p-4 bg-blue-50 rounded-lg">
                             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mr-3"></div>
-                            <span class="text-blue-600 font-medium">Projeler yükleniyor...</span>
+                            <span class="text-blue-600 font-medium">{{ __('admin.loading_projects') }}</span>
                         </div>
                     </div>
 
@@ -191,10 +191,10 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto text-gray-400 mb-4">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                         </svg>
-                        <h3 class="text-lg font-medium text-gray-900 mb-2">Henüz proje oluşturmadınız</h3>
-                        <p class="text-gray-600 mb-4">İlk projenizi oluşturarak başlayın</p>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">{{ __('admin.no_projects') }}</h3>
+                        <p class="text-gray-600 mb-4">{{ __('admin.start_first_project') }}</p>
                         <button id="createFirstProjectBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                            İlk Projeyi Oluştur
+                            {{ __('admin.create_first_project') }}
                         </button>
                     </div>
                 </div>

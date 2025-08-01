@@ -1,0 +1,363 @@
+
+
+/* Core Styles */
+#wpcontent {
+    padding-left: 0;
+}
+.stat-sublabel {
+    font-size: 0.8rem;
+    color: #666;
+    display: block;
+    margin-top: 0.5rem;
+}
+body.wp-admin .wrap.mxchat-transcripts-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Hero Section */
+body.wp-admin .wrap.mxchat-transcripts-wrapper .mxchat-transcripts-hero {
+    text-align: center;
+    padding: 3.5rem 2rem;
+    position: relative;
+    background: #212121;
+    border-bottom: 4px solid transparent;
+    border-image: linear-gradient(135deg, #fa73e6, #7873f5, #3ac9d1);
+    border-image-slice: 1;
+}
+
+body.wp-admin .wrap.mxchat-transcripts-wrapper .mxchat-transcripts-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at center,
+        rgba(250, 115, 230, 0.08) 0%,
+        rgba(120, 115, 245, 0.08) 50%,
+        rgba(58, 201, 209, 0.08) 100%
+    );
+    z-index: 1;
+}
+
+body.wp-admin .wrap.mxchat-transcripts-wrapper .mxchat-main-title {
+    font-size: 3.5rem;
+    margin: 0 0 1.5rem;
+    line-height: 1.2;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+body.wp-admin .wrap.mxchat-transcripts-wrapper .mxchat-gradient-text {
+    background: linear-gradient(135deg, #fa73e6, #7873f5, #3ac9d1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    font-weight: 700;
+}
+
+body.wp-admin .wrap.mxchat-transcripts-wrapper .mxchat-hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    line-height: 1.6;
+}
+
+/* Content Area */
+body.wp-admin .wrap.mxchat-transcripts-wrapper .mxchat-content {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body.wp-admin .wrap.mxchat-transcripts-wrapper {
+        padding: 0;
+    }
+    
+    body.wp-admin .wrap.mxchat-transcripts-wrapper .mxchat-main-title {
+        font-size: 2.5rem;
+    }
+    
+    body.wp-admin .wrap.mxchat-transcripts-wrapper .mxchat-transcripts-hero {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .auto-fold #wpcontent {
+        margin-left: 0;
+        padding-left: 0px;
+    }
+    .mxchat-action-button {
+        width: 100%;
+    }
+}
+
+.mxchat-action-button {
+    background: linear-gradient(135deg, #fa73e6, #7873f5);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mxchat-action-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(120, 115, 245, 0.2);
+}
+
+.mxchat-action-button.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.mxchat-action-button .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+
+
+
+/* Chat Email Notification Modal styles */
+.mxchat-chat-notification-modal-overlay {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: mxchatNotificationFadeIn 0.3s ease;
+}
+
+@keyframes mxchatNotificationFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.mxchat-chat-notification-modal-content {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 500px;
+    animation: mxchatNotificationSlideIn 0.3s ease;
+}
+
+@keyframes mxchatNotificationSlideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.mxchat-chat-notification-modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mxchat-chat-notification-modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.mxchat-chat-notification-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6b7280;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.mxchat-chat-notification-modal-close:hover {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.mxchat-chat-notification-modal-body {
+    padding: 20px;
+}
+
+.mxchat-chat-notification-modal-body p {
+    margin-top: 0;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.mxchat-chat-notification-modal-footer {
+    padding: 20px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#mxchat-chat-email-notification-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+#mxchat-chat-email-notification-btn .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+/* Form styles within chat notification modal */
+.mxchat-chat-notification-modal-content .form-table {
+    margin: 0;
+}
+
+.mxchat-chat-notification-modal-content .form-table th {
+    padding: 15px 10px 15px 0;
+    width: 180px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.mxchat-chat-notification-modal-content .form-table td {
+    padding: 15px 10px;
+}
+
+.mxchat-chat-notification-modal-content .regular-text {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.mxchat-chat-notification-modal-content .description {
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* Checkbox styling in chat notification modal */
+.mxchat-chat-notification-modal-content input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.mxchat-chat-notification-modal-content label {
+    color: #374151;
+    font-size: 14px;
+}
+
+/* Button styling in chat notification modal */
+.mxchat-chat-notification-modal-content .button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mxchat-chat-notification-modal-content .button-primary {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border: none;
+    color: #fff;
+}
+
+.mxchat-chat-notification-modal-content .button-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.mxchat-chat-notification-modal-content .mxchat-chat-notification-modal-cancel {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+}
+
+.mxchat-chat-notification-modal-content .mxchat-chat-notification-modal-cancel:hover {
+    background: #e5e7eb;
+}
+
+
+
+
+/* Pagination Styles */
+.mxchat-pagination {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mxchat-pagination-info {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.mxchat-pagination-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.mxchat-pagination-button {
+    padding: 6px 12px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mxchat-pagination-button:hover {
+    background: #e9e9e9;
+}
+
+.mxchat-pagination-button.active {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: white;
+    font-weight: bold;
+}
+
+.mxchat-pagination-ellipsis {
+    padding: 6px 8px;
+    color: #666;
+}
+
+@media (max-width: 782px) {
+    .mxchat-pagination {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .mxchat-pagination-controls {
+        margin-top: 10px;
+    }
+}

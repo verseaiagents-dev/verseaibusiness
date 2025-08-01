@@ -1,0 +1,13 @@
+@/ui dosya dizi voice flow uygulamasının tasarım klonunu içerir. Versai ise voiceflow uygulamasından esinlenilmiş çok yönlü sektörel ai agentlar ile 
+işletmelerin müşteri edinmelerini website veya versai profil içinde chatbot arayüzüyle son kullanıcı ile yapay zeka  arasında konuşmalarla işletme hakkında bilgileri 
+kullanımıyla 7/24 çalışan bir uygulamadır. Ben ui dosya dizini içinde bir prototip tasarımı sonrasında laravel embedjs ve kullanıcı arayüzünde bağlantı kurarak canlıya geçireceğim
+Bu prototip içinde şuan 3 tane sektörel agent belirledim E-ticaret, Turizm ve Emlak setkröü ile pivot halinde çalışacak. Bu pivot sektörlerin site eventleri bazı alamnlarda farklı olabiliyor. Örnek olarak E-ticarette sepete ekleme varken emlakta olmayabiiliyor.
+Kullanıcılar input verilerini yapay zeka niyet ölçümlemesi yapar niyet oranı %75den büyükse tanımlanan niyet actiona gider orada eylem gerçekleştirir.
+ilk prototip çalışması bir woocommerce altyapısına sahip e-ticaret sitesinden alınan api verileri pinecone eklendikten sonra sekronize çalışmalar ile kullanıcı yazdığı input değerini niyet ölçümlemesi sonucunda
+-ürün önerisi 
+-ürün sepete ekleme/terk etme(iptali)
+-kargo sorgu
+-favoriler ekleme,
+-ürün iade süreci başlatma/takibi/iptali vb niyete göre eylem tanımlamalarıyla çalışma sağlanacak.
+Diğer sektörler coming soon olarak işaretlenecek. Bu bilditiye göre oluşturulan  script.js içinde sadece ui tanımlamaları ve event tanımlamalarıyla çalışma sağlancak script içerilkleri sektörel olarak değişkenlikte gösterebilir. kullanıcı burada yapması gereken 
+tanımlanacak olan eventleri api vasıtasıyla laravel ile oluşturulan kullanıcı paneline eklemesi sonucuyla işlemler yapılabilecek Bu prototip çalışmasında laravel kullanıcı panelini kullanabilirsin.

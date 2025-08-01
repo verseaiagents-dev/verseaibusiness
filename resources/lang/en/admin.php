@@ -2,104 +2,106 @@
 
 return [
     // Sidebar Navigation
+    'admin_panel' => 'Admin Panel',
+    'ai_settings' => 'AI Settings',
+    'system_logs' => 'System Logs',
+    'backup' => 'Backup',
+    'analytics' => 'Analytics',
+    'security' => 'Security',
+    'system_settings' => 'System Settings',
+    'user_panel' => 'User Panel',
+    
+    // Dashboard Sidebar
     'overview' => 'Overview',
     'agents' => 'Agents',
     'messages' => 'Messages',
     'events' => 'Events',
-    'training' => 'Training',
+    'training' => 'Training Data',
     'billing' => 'Billing',
     'settings' => 'Settings',
     
-    // Admin Panel
-    'admin_panel' => 'Admin Panel',
-    'admin_panel_description' => 'VersAI management panel',
-    'admin_badge' => 'ADMIN',
-    'user_panel' => 'User Panel',
-    
     // Dashboard
-    'dashboard' => 'Dashboard',
-    'dashboard_title' => 'Current Status',
-    'dashboard_description' => 'Welcome to your VersAI dashboard',
+    'dashboard_title' => 'Dashboard',
+    'dashboard_description' => 'View your project\'s overall status',
     'refresh_data' => 'Refresh Data',
-    'loading_dashboard' => 'Loading dashboard data...',
+    'loading_dashboard' => 'Loading dashboard...',
+    'total_agents' => 'Total Agents',
+    'active_sessions' => 'Active Sessions',
+    'messages_today' => 'Messages Today',
+    'api_calls' => 'API Calls',
+    'my_projects' => 'My Projects',
+    'manage_projects' => 'Manage your created projects',
+    'new_project' => 'New Project',
+    'loading_projects' => 'Loading projects...',
+    'no_projects' => 'You haven\'t created any projects yet',
+    'create_first_project' => 'Create First Project',
+    'start_first_project' => 'Start by creating your first project',
+    // User Management
+    'user_management' => 'User Management',
+    'user_management_description' => 'Manage system users',
+    'add_new_user' => 'Add New User',
+    'search_users' => 'Search Users...',
+    'all_roles' => 'All Roles',
+    'all_status' => 'All Status',
+    'filter' => 'Filter',
+    
+    // Table Headers
+    'user' => 'User',
+    'email' => 'Email',
+    'role' => 'Role',
+    'status' => 'Status',
+    'joined_date' => 'Joined Date',
+    'actions' => 'Actions',
+    
+    // Status and Roles
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'admin' => 'Administrator',
+    'user_role' => 'User',
+    
+    // Messages
+    'no_users_found' => 'No users found',
+    'confirm_delete' => 'Are you sure you want to delete this user?',
+    'user_updated_successfully' => 'User updated successfully',
+    'user_deleted_successfully' => 'User deleted successfully',
+    'cannot_delete_self' => 'You cannot delete your own account',
+    
+    // Edit User
+    'edit_user' => 'Edit User',
+    'edit_user_description' => 'Edit user information',
+    'back_to_users' => 'Back to Users',
+    'save_changes' => 'Save Changes',
+    'cancel' => 'Cancel',
+    'name' => 'Full Name',
     
     // Knowledge Base
     'knowledge_base' => 'Knowledge Base',
-    'knowledge_base_description' => 'trained data for project',
+    'knowledge_base_description' => 'knowledge base for project',
     'back_to_dashboard' => 'Back to Dashboard',
     'total_documents' => 'Total Documents',
     'last_update' => 'Last Update',
     'project_status' => 'Project Status',
     'trained_data' => 'Trained Data',
-    
-    // Common Actions
-    'add' => 'Add',
-    'edit' => 'Edit',
-    'delete' => 'Delete',
-    'view' => 'View',
-    'save' => 'Save',
-    'cancel' => 'Cancel',
-    'close' => 'Close',
-    'back' => 'Back',
-    'next' => 'Next',
-    'previous' => 'Previous',
-    'submit' => 'Submit',
-    'search' => 'Search',
-    'filter' => 'Filter',
-    'sort' => 'Sort',
-    'all' => 'All',
-    'none' => 'None',
-    'yes' => 'Yes',
-    'no' => 'No',
-    'ok' => 'OK',
-    
-    // Status
-    'active' => 'Active',
-    'inactive' => 'Inactive',
-    'pending' => 'Pending',
+    'trained_data_description' => 'Documents uploaded to your project and taught information',
+    'document_type' => 'Type',
+    'upload_date' => 'Upload Date',
+    'download' => 'Download',
+    'delete_document' => 'Delete Document',
+    'confirm_delete_document' => 'Are you sure you want to delete this document?',
+    'document_deleted_successfully' => 'Document deleted successfully!',
+    'document_deletion_failed' => 'Document could not be deleted.',
+    'document_download_failed' => 'Document could not be downloaded.',
+    'document_deletion_error' => 'An error occurred while deleting the document.',
+    'document_download_error' => 'An error occurred while downloading the document.',
+    'no_documents_uploaded' => 'No documents uploaded yet',
+    'no_documents_description' => 'Start training your AI model by uploading documents to your project',
+    'file_size' => 'File Size',
+    'file_extension' => 'File Extension',
+    'upload_time' => 'Upload Time',
+    'document_status' => 'Document Status',
+    'processing' => 'Processing',
     'completed' => 'Completed',
     'failed' => 'Failed',
-    'processing' => 'Processing',
-    
-    // Messages
-    'success' => 'Success',
-    'error' => 'Error',
-    'warning' => 'Warning',
-    'info' => 'Info',
-    'loading' => 'Loading...',
-    
-    // User Management
-    'users' => 'Users',
-    'user_management' => 'User Management',
-    'add_user' => 'Add User',
-    'edit_user' => 'Edit User',
-    'delete_user' => 'Delete User',
-    'user_details' => 'User Details',
-    'user_role' => 'User Role',
-    'user_status' => 'User Status',
-    
-    // Settings
-    'system_settings' => 'System Settings',
-    'ai_settings' => 'AI Settings',
-    'security_settings' => 'Security Settings',
-    'backup_settings' => 'Backup Settings',
-    'analytics_settings' => 'Analytics Settings',
-    
-    // Analytics
-    'analytics' => 'Analytics',
-    'system_logs' => 'System Logs',
-    'performance_metrics' => 'Performance Metrics',
-    'usage_statistics' => 'Usage Statistics',
-    
-    // Backup
-    'backup' => 'Backup',
-    'create_backup' => 'Create Backup',
-    'restore_backup' => 'Restore Backup',
-    'backup_history' => 'Backup History',
-    
-    // Security
-    'security' => 'Security',
-    'security_logs' => 'Security Logs',
-    'access_control' => 'Access Control',
-    'permissions' => 'Permissions',
-]; 
+    'pending' => 'Pending',
+    'importoptions' => 'Document Settings',
+];

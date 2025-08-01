@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('file_size');
             $table->text('content')->nullable(); // Extracted content
             $table->json('metadata')->nullable(); // Additional file metadata
-            $table->enum('status', ['processing', 'completed', 'failed'])->default('processing');
+            $table->enum('status', ['processing', 'completed', 'failed', 'active'])->default('processing');
             $table->timestamps();
         });
     }

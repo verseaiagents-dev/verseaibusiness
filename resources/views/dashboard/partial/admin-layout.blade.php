@@ -61,6 +61,7 @@
         });
     </script>
     
+    @stack('scripts')
     @yield('additional-scripts')
 </body>
 </html> 

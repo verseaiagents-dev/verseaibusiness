@@ -17,12 +17,24 @@ class KnowledgeBase extends Model
         'file_size',
         'content',
         'metadata',
-        'status'
+        'status',
+        // AI alanları
+        'ai_processed_content',
+        'ai_summary',
+        'ai_categories',
+        'ai_embeddings',
+        'ai_processing_status',
+        'ai_metadata',
+        'ai_processed_at'
     ];
 
     protected $casts = [
         'file_size' => 'integer',
-        'metadata' => 'array'
+        'metadata' => 'array',
+        'ai_categories' => 'array',
+        'ai_embeddings' => 'array',
+        'ai_metadata' => 'array',
+        'ai_processed_at' => 'datetime'
     ];
 
     /**
@@ -31,5 +43,43 @@ class KnowledgeBase extends Model
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
+    }
+
+    /**
+     * Check if AI processing is completed
+     */
+    public function isAiProcessed(): bool
+    {
+        return $this->ai_processing_status === 'completed';
+    }
+
+    /**
+     * Check if AI processing is pending
+     */
+    public function isAiPending(): bool
+    {
+        return $this->ai_processing_status === 'pending';
+    }
+
+    /**
+     * Get AI categories as array
+     */
+    public function getAiCategoriesArray(): array
+    {
+        return $this->ai_categories ?? [];
+    }
+
+    /**
+     * Get AI summary (truncated if too long)
+     */
+    public function getShortSummary(int $length = 200): string
+    {
+        if (!$this->ai_summary) {
+            return '';
+        }
+        
+        return strlen($this->ai_summary) > $length 
+            ? substr($this->ai_summary, 0, $length) . '...'
+            : $this->ai_summary;
     }
 }

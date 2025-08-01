@@ -47,6 +47,7 @@ class AgentSeeder extends Seeder
         $agents = [
             [
                 'user_id' => $user->id,
+                'name' => 'E-Ticaret Destek Ajanı',
                 'role_name' => 'Customer Support Agent',
                 'sector' => 'E-commerce',
                 'training_data' => [
@@ -66,6 +67,7 @@ class AgentSeeder extends Seeder
             ],
             [
                 'user_id' => $user->id,
+                'name' => 'Restoran Asistanı',
                 'role_name' => 'Restaurant Assistant',
                 'sector' => 'Food & Beverage',
                 'training_data' => [
@@ -86,6 +88,7 @@ class AgentSeeder extends Seeder
             ],
             [
                 'user_id' => $user->id,
+                'name' => 'Emlak Danışmanı',
                 'role_name' => 'Real Estate Consultant',
                 'sector' => 'Real Estate',
                 'training_data' => [
@@ -106,6 +109,7 @@ class AgentSeeder extends Seeder
             ],
             [
                 'user_id' => $user->id,
+                'name' => 'Otel Konsiyerj',
                 'role_name' => 'Hotel Concierge',
                 'sector' => 'Hospitality',
                 'training_data' => [

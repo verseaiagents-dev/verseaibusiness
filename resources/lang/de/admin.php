@@ -1,0 +1,107 @@
+<?php
+
+return [
+    // Sidebar Navigation
+    'admin_panel' => 'Admin-Panel',
+    'ai_settings' => 'KI-Einstellungen',
+    'system_logs' => 'Systemprotokolle',
+    'backup' => 'Sicherung',
+    'analytics' => 'Analytik',
+    'security' => 'Sicherheit',
+    'system_settings' => 'Systemeinstellungen',
+    'user_panel' => 'Benutzer-Panel',
+    
+    // Dashboard Sidebar
+    'overview' => 'Übersicht',
+    'agents' => 'Agenten',
+    'messages' => 'Nachrichten',
+    'events' => 'Ereignisse',
+    'training' => 'Trainingsdaten',
+    'billing' => 'Abrechnung',
+    'settings' => 'Einstellungen',
+    
+    // Dashboard
+    'dashboard_title' => 'Dashboard',
+    'dashboard_description' => 'Überblick über den Gesamtstatus Ihres Projekts',
+    'refresh_data' => 'Daten aktualisieren',
+    'loading_dashboard' => 'Dashboard wird geladen...',
+    'total_agents' => 'Gesamtzahl Agenten',
+    'active_sessions' => 'Aktive Sitzungen',
+    'messages_today' => 'Nachrichten heute',
+    'api_calls' => 'API-Aufrufe',
+    'my_projects' => 'Meine Projekte',
+    'manage_projects' => 'Verwalten Sie Ihre erstellten Projekte',
+    'new_project' => 'Neues Projekt',
+    'loading_projects' => 'Projekte werden geladen...',
+    'no_projects' => 'Sie haben noch keine Projekte erstellt',
+    'create_first_project' => 'Erstes Projekt erstellen',
+    'start_first_project' => 'Beginnen Sie mit der Erstellung Ihres ersten Projekts',
+    // User Management
+    'user_management' => 'Benutzerverwaltung',
+    'user_management_description' => 'Systembenutzer verwalten',
+    'add_new_user' => 'Neuen Benutzer hinzufügen',
+    'search_users' => 'Benutzer suchen...',
+    'all_roles' => 'Alle Rollen',
+    'all_status' => 'Alle Status',
+    'filter' => 'Filtern',
+    
+    // Table Headers
+    'user' => 'Benutzer',
+    'email' => 'E-Mail',
+    'role' => 'Rolle',
+    'status' => 'Status',
+    'joined_date' => 'Beitrittsdatum',
+    'actions' => 'Aktionen',
+    
+    // Status and Roles
+    'active' => 'Aktiv',
+    'inactive' => 'Inaktiv',
+    'admin' => 'Administrator',
+    'user_role' => 'Benutzer',
+    
+    // Messages
+    'no_users_found' => 'Keine Benutzer gefunden',
+    'confirm_delete' => 'Möchten Sie diesen Benutzer wirklich löschen?',
+    'user_updated_successfully' => 'Benutzer erfolgreich aktualisiert',
+    'user_deleted_successfully' => 'Benutzer erfolgreich gelöscht',
+    'cannot_delete_self' => 'Sie können Ihr eigenes Konto nicht löschen',
+    
+    // Edit User
+    'edit_user' => 'Benutzer bearbeiten',
+    'edit_user_description' => 'Benutzerinformationen bearbeiten',
+    'back_to_users' => 'Zurück zu Benutzern',
+    'save_changes' => 'Änderungen speichern',
+    'cancel' => 'Abbrechen',
+    'name' => 'Vollständiger Name',
+    
+    // Knowledge Base
+    'knowledge_base' => 'Wissensdatenbank',
+    'knowledge_base_description' => 'Wissensdatenbank für Projekt',
+    'back_to_dashboard' => 'Zurück zum Dashboard',
+    'total_documents' => 'Gesamtdokumente',
+    'last_update' => 'Letzte Aktualisierung',
+    'project_status' => 'Projektstatus',
+    'trained_data' => 'Trainierte Daten',
+    'trained_data_description' => 'In Ihr Projekt hochgeladene Dokumente und gelehrtes Wissen',
+    'document_type' => 'Typ',
+    'upload_date' => 'Hochladedatum',
+    'download' => 'Herunterladen',
+    'delete_document' => 'Dokument löschen',
+    'confirm_delete_document' => 'Möchten Sie dieses Dokument wirklich löschen?',
+    'document_deleted_successfully' => 'Dokument erfolgreich gelöscht!',
+    'document_deletion_failed' => 'Dokument konnte nicht gelöscht werden.',
+    'document_download_failed' => 'Dokument konnte nicht heruntergeladen werden.',
+    'document_deletion_error' => 'Beim Löschen des Dokuments ist ein Fehler aufgetreten.',
+    'document_download_error' => 'Beim Herunterladen des Dokuments ist ein Fehler aufgetreten.',
+    'no_documents_uploaded' => 'Noch keine Dokumente hochgeladen',
+    'no_documents_description' => 'Beginnen Sie mit dem Training Ihres KI-Modells, indem Sie Dokumente in Ihr Projekt hochladen',
+    'file_size' => 'Dateigröße',
+    'file_extension' => 'Dateierweiterung',
+    'upload_time' => 'Hochladezeit',
+    'document_status' => 'Dokumentstatus',
+    'processing' => 'Verarbeitung',
+    'completed' => 'Abgeschlossen',
+    'failed' => 'Fehlgeschlagen',
+    'pending' => 'Ausstehend',
+    'importoptions' => 'Dokumenteinstellungen',
+];
