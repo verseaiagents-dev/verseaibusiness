@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Fiyatlandırma Hesaplayıcısı</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .calculator-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        
+        .calculator-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .result h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #667eea;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .price-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .price-info h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .model-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .model-info h4 {
+            color: #1976d2;
+            margin-bottom: 8px;
+        }
+        
+        .model-info p {
+            color: #424242;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 OpenAI Fiyatlandırma Hesaplayıcısı</h1>
+            <p>Güncel OpenAI modelleri için maliyet hesaplama</p>
+        </div>
+        
+        <div class="content">
+            <div class="price-info">
+                <h3>💰 Güncel Fiyatlar (2024)</h3>
+                <div class="price-item">
+                    <span><strong>GPT-4 Input:</strong></span>
+                    <span>$10.00 / 1M tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>GPT-4 Output:</strong></span>
+                    <span>$30.00 / 1M tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>GPT-4 Mini Input:</strong></span>
+                    <span>$0.15 / 1M tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>GPT-4 Mini Output:</strong></span>
+                    <span>$0.60 / 1M tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>GPT-4 Turbo Input:</strong></span>
+                    <span>$10.00 / 1M tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>GPT-4 Turbo Output:</strong></span>
+                    <span>$30.00 / 1M tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>GPT-4 Omni Input:</strong></span>
+                    <span>$5.00 / 1M tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>GPT-4 Omni Output:</strong></span>
+                    <span>$15.00 / 1M tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>text-embedding-3-small:</strong></span>
+                    <span>$0.00002 / 1K tokens</span>
+                </div>
+                <div class="price-item">
+                    <span><strong>text-embedding-3-large:</strong></span>
+                    <span>$0.00013 / 1K tokens</span>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="calculator-section">
+                    <h2>💬 Chat Maliyeti Hesaplama</h2>
+                    <div class="form-group">
+                        <label for="chatModel">Model Seçimi:</label>
+                        <select id="chatModel" onchange="updateModelInfo()">
+                            <option value="gpt-4">GPT-4</option>
+                            <option value="gpt-4-mini">GPT-4 Mini</option>
+                            <option value="gpt-4-turbo">GPT-4 Turbo</option>
+                            <option value="gpt-4-omni">GPT-4 Omni</option>
+                        </select>
+                    </div>
+                    <div id="modelInfo" class="model-info">
+                        <h4>GPT-4</h4>
+                        <p>Input: $10.00 / 1M tokens | Output: $30.00 / 1M tokens | Context: 128K tokens</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="chatInput">Giriş Metni:</label>
+                        <textarea id="chatInput" placeholder="Kullanıcının gönderdiği mesaj...">Merhaba, bugün hava nasıl?</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="chatOutput">Çıkış Metni:</label>
+                        <textarea id="chatOutput" placeholder="AI'nin verdiği cevap...">Merhaba! Bugün hava güzel görünüyor. Size nasıl yardımcı olabilirim?</textarea>
+                    </div>
+                    <button class="btn" onclick="calculateChatCost()">Hesapla</button>
+                    <div id="chatResult" class="result" style="display: none;"></div>
+                </div>
+                
+                <div class="calculator-section">
+                    <h2>🔍 Embedding Maliyeti Hesaplama</h2>
+                    <div class="form-group">
+                        <label for="embeddingModel">Embedding Modeli:</label>
+                        <select id="embeddingModel">
+                            <option value="text-embedding-3-small">text-embedding-3-small</option>
+                            <option value="text-embedding-3-large">text-embedding-3-large</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="embeddingText">Metin:</label>
+                        <textarea id="embeddingText" placeholder="Embedding için kullanılacak metin...">Bu bir örnek metin. Embedding için kullanılacak.</textarea>
+                    </div>
+                    <button class="btn" onclick="calculateEmbeddingCost()">Hesapla</button>
+                    <div id="embeddingResult" class="result" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <div class="calculator-section">
+                <h2>📊 Aylık Kullanım Tahmini</h2>
+                <div class="grid">
+                    <div>
+                        <div class="form-group">
+                            <label for="monthlyModel">Model Seçimi:</label>
+                            <select id="monthlyModel">
+                                <option value="gpt-4">GPT-4</option>
+                                <option value="gpt-4-mini">GPT-4 Mini</option>
+                                <option value="gpt-4-turbo">GPT-4 Turbo</option>
+                                <option value="gpt-4-omni">GPT-4 Omni</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dailyChats">Günlük Chat Sayısı:</label>
+                            <input type="number" id="dailyChats" value="100" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="avgInputTokens">Ortalama Input Tokens:</label>
+                            <input type="number" id="avgInputTokens" value="50" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="avgOutputTokens">Ortalama Output Tokens:</label>
+                            <input type="number" id="avgOutputTokens" value="100" min="0">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label for="monthlyEmbeddingModel">Embedding Modeli:</label>
+                            <select id="monthlyEmbeddingModel">
+                                <option value="text-embedding-3-small">text-embedding-3-small</option>
+                                <option value="text-embedding-3-large">text-embedding-3-large</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dailyEmbeddings">Günlük Embedding Sayısı:</label>
+                            <input type="number" id="dailyEmbeddings" value="50" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="avgEmbeddingTokens">Ortalama Embedding Tokens:</label>
+                            <input type="number" id="avgEmbeddingTokens" value="200" min="0">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" onclick="calculateMonthlyEstimate()">Aylık Tahmin Hesapla</button>
+                <div id="monthlyResult" class="result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modelPrices = {
+            'gpt-4': { input: 10.00, output: 30.00, name: 'GPT-4' },
+            'gpt-4-mini': { input: 0.15, output: 0.60, name: 'GPT-4 Mini' },
+            'gpt-4-turbo': { input: 10.00, output: 30.00, name: 'GPT-4 Turbo' },
+            'gpt-4-omni': { input: 5.00, output: 15.00, name: 'GPT-4 Omni' }
+        };
+
+        const embeddingPrices = {
+            'text-embedding-3-small': { price: 0.00002, name: 'text-embedding-3-small' },
+            'text-embedding-3-large': { price: 0.00013, name: 'text-embedding-3-large' }
+        };
+
+        function updateModelInfo() {
+            const modelSelect = document.getElementById('chatModel');
+            const modelInfo = document.getElementById('modelInfo');
+            const selectedModel = modelSelect.value;
+            const prices = modelPrices[selectedModel];
+            
+            modelInfo.innerHTML = `
+                <h4>${prices.name}</h4>
+                <p>Input: $${prices.input.toFixed(2)} / 1M tokens | Output: $${prices.output.toFixed(2)} / 1M tokens | Context: 128K tokens</p>
+            `;
+        }
+
+        function estimateTokens(text, language = 'turkish') {
+            const words = text.split(' ').length;
+            if (language === 'turkish') {
+                return Math.ceil(words / 0.6);
+            } else {
+                return Math.ceil(words / 0.75);
+            }
+        }
+
+        function calculateChatCost() {
+            const modelSelect = document.getElementById('chatModel');
+            const inputText = document.getElementById('chatInput').value;
+            const outputText = document.getElementById('chatOutput').value;
+            
+            const selectedModel = modelSelect.value;
+            const prices = modelPrices[selectedModel];
+            
+            const inputTokens = estimateTokens(inputText);
+            const outputTokens = estimateTokens(outputText);
+            
+            const inputCost = (inputTokens / 1000000) * prices.input;
+            const outputCost = (outputTokens / 1000000) * prices.output;
+            const totalCost = inputCost + outputCost;
+            
+            const result = document.getElementById('chatResult');
+            result.innerHTML = `
+                <h3>Chat Maliyeti Sonucu (${prices.name})</h3>
+                <div class="result-item">
+                    <span>Giriş Tokens:</span>
+                    <span>${inputTokens}</span>
+                </div>
+                <div class="result-item">
+                    <span>Çıkış Tokens:</span>
+                    <span>${outputTokens}</span>
+                </div>
+                <div class="result-item">
+                    <span>Toplam Tokens:</span>
+                    <span>${inputTokens + outputTokens}</span>
+                </div>
+                <div class="result-item">
+                    <span>Giriş Maliyeti:</span>
+                    <span>$${inputCost.toFixed(6)}</span>
+                </div>
+                <div class="result-item">
+                    <span>Çıkış Maliyeti:</span>
+                    <span>$${outputCost.toFixed(6)}</span>
+                </div>
+                <div class="result-item">
+                    <span>Toplam Maliyet:</span>
+                    <span>$${totalCost.toFixed(6)} (₺${(totalCost * 32).toFixed(4)})</span>
+                </div>
+            `;
+            result.style.display = 'block';
+        }
+
+        function calculateEmbeddingCost() {
+            const modelSelect = document.getElementById('embeddingModel');
+            const text = document.getElementById('embeddingText').value;
+            
+            const selectedModel = modelSelect.value;
+            const prices = embeddingPrices[selectedModel];
+            
+            const tokens = estimateTokens(text);
+            const cost = (tokens / 1000) * prices.price;
+            
+            const result = document.getElementById('embeddingResult');
+            result.innerHTML = `
+                <h3>Embedding Maliyeti Sonucu (${prices.name})</h3>
+                <div class="result-item">
+                    <span>Tokens:</span>
+                    <span>${tokens}</span>
+                </div>
+                <div class="result-item">
+                    <span>Maliyet:</span>
+                    <span>$${cost.toFixed(6)} (₺${(cost * 32).toFixed(4)})</span>
+                </div>
+            `;
+            result.style.display = 'block';
+        }
+
+        function calculateMonthlyEstimate() {
+            const chatModel = document.getElementById('monthlyModel').value;
+            const embeddingModel = document.getElementById('monthlyEmbeddingModel').value;
+            
+            const chatPrices = modelPrices[chatModel];
+            const embeddingPrice = embeddingPrices[embeddingModel];
+            
+            const dailyChats = parseInt(document.getElementById('dailyChats').value);
+            const avgInputTokens = parseInt(document.getElementById('avgInputTokens').value);
+            const avgOutputTokens = parseInt(document.getElementById('avgOutputTokens').value);
+            const dailyEmbeddings = parseInt(document.getElementById('dailyEmbeddings').value);
+            const avgEmbeddingTokens = parseInt(document.getElementById('avgEmbeddingTokens').value);
+            
+            const monthlyChats = dailyChats * 30;
+            const monthlyEmbeddings = dailyEmbeddings * 30;
+            
+            const chatInputCost = (avgInputTokens / 1000000) * chatPrices.input * monthlyChats;
+            const chatOutputCost = (avgOutputTokens / 1000000) * chatPrices.output * monthlyChats;
+            const totalChatCost = chatInputCost + chatOutputCost;
+            
+            const totalEmbeddingCost = (avgEmbeddingTokens / 1000) * embeddingPrice.price * monthlyEmbeddings;
+            const totalMonthlyCost = totalChatCost + totalEmbeddingCost;
+            
+            const result = document.getElementById('monthlyResult');
+            result.innerHTML = `
+                <h3>Aylık Kullanım Tahmini</h3>
+                <div class="result-item">
+                    <span>Chat Modeli:</span>
+                    <span>${chatPrices.name}</span>
+                </div>
+                <div class="result-item">
+                    <span>Embedding Modeli:</span>
+                    <span>${embeddingPrice.name}</span>
+                </div>
+                <div class="result-item">
+                    <span>Aylık Chat Sayısı:</span>
+                    <span>${monthlyChats}</span>
+                </div>
+                <div class="result-item">
+                    <span>Aylık Embedding Sayısı:</span>
+                    <span>${monthlyEmbeddings}</span>
+                </div>
+                <div class="result-item">
+                    <span>Chat Maliyeti:</span>
+                    <span>$${totalChatCost.toFixed(2)}</span>
+                </div>
+                <div class="result-item">
+                    <span>Embedding Maliyeti:</span>
+                    <span>$${totalEmbeddingCost.toFixed(2)}</span>
+                </div>
+                <div class="result-item">
+                    <span>Toplam Aylık Maliyet:</span>
+                    <span>$${totalMonthlyCost.toFixed(2)} (₺${(totalMonthlyCost * 32).toFixed(2)})</span>
+                </div>
+            `;
+            result.style.display = 'block';
+        }
+
+        // Sayfa yüklendiğinde model bilgisini güncelle
+        document.addEventListener('DOMContentLoaded', function() {
+            updateModelInfo();
+        });
+    </script>
+</body>
+</html> 

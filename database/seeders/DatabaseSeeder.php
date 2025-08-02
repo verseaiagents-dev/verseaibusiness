@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AgentModelSeeder::class,
             AgentSeeder::class,
+            UserProfileSeeder::class,
         ]);
     }
 }

@@ -245,7 +245,7 @@
         </svg>
         <h3 class="text-lg font-medium text-gray-900 mb-2">Henüz Agent Oluşturmadınız</h3>
         <p class="text-gray-600 mb-4">AI Agent'larınızı oluşturarak API event yönetimine başlayabilirsiniz.</p>
-        <a href="{{ route('ai.settings') }}" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
+        <a href="{{ route('admin.ai-settings') }}" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
             Agent Oluştur
         </a>
     </div>

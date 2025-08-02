@@ -23,15 +23,31 @@
         </a>
 
         <!-- AI Settings -->
-        <a href="{{ route('ai.settings') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('ai.settings') ? 'active' : '' }}" title="{{ __('admin.ai_settings') }}">
+        <a href="{{ route('admin.ai-settings') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('admin.ai-settings') ? 'active' : '' }}" title="{{ __('admin.ai_settings') }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423L16.5 15.75l.394 1.183a2.25 2.25 0 001.423 1.423L19.5 18.75l-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
             </svg>
             <div class="sidebar-tooltip">{{ __('admin.ai_settings') }}</div>
         </a>
 
+        <!-- AI Providers -->
+        <a href="{{ route('admin.ai-providers.index') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('admin.ai-providers.*') ? 'active' : '' }}" title="AI Providers">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <div class="sidebar-tooltip">AI Providers</div>
+        </a>
+
+        <!-- Agent Management -->
+        <a href="{{ route('admin.agents.index') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('admin.agents.*') ? 'active' : '' }}" title="Agent Yönetimi">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+            </svg>
+            <div class="sidebar-tooltip">Agent Yönetimi</div>
+        </a>
+
         <!-- Intent Management -->
-        <a href="{{ route('user.intents.index') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('user.intents.*') ? 'active' : '' }}" title="Niyet Yönetimi">
+        <a href="{{ route('admin.intents.index') }}" class="sidebar-nav-item admin-switch-item {{ request()->routeIs('admin.intents.*') ? 'active' : '' }}" title="Niyet Yönetimi">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>

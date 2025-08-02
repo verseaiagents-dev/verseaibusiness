@@ -23,7 +23,9 @@ class AdminController extends Controller
         return view('dashboard.admin-panel');
     }
 
-    public function aiSettings()
+
+
+    public function adminAiSettings()
     {
         // Auth kontrolü
         if (!auth()->check()) {
@@ -35,11 +37,12 @@ class AdminController extends Controller
             return redirect()->route('dashboard')->with('error', 'Bu sayfaya erişim yetkiniz yok.');
         }
 
-        $agents = \App\Models\Agent::with(['integrations', 'intents'])->get();
+        // Tüm kullanıcıların agent'larını çek
+        $allAgents = \App\Models\Agent::with(['user', 'integrations', 'intents'])->get();
         $sectors = \App\Models\Agent::getSectors();
         $integrationTypes = \App\Models\AgentIntegration::getIntegrationTypes();
         
-        return view('dashboard.ai-settings', compact('agents', 'sectors', 'integrationTypes'));
+        return view('dashboard.admin-ai-settings', compact('allAgents', 'sectors', 'integrationTypes'));
     }
 
     public function storeAgent(Request $request)

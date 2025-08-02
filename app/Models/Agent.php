@@ -18,6 +18,7 @@ class Agent extends Model
         'api_credentials',
         'model_settings',
         'user_id',
+        'project_id',
         'role_name',
         'training_data',
         'model_id',
@@ -68,8 +69,42 @@ class Agent extends Model
         return $this->hasMany(ApiEvent::class);
     }
 
+    public function usageLogs()
+    {
+        return $this->hasMany(AgentUsageLog::class);
+    }
+
+    // Cost calculation methods
+    public function getTodayCost()
+    {
+        return $this->usageLogs()->today()->sum('total_cost');
+    }
+
+    public function getMonthlyCost()
+    {
+        return $this->usageLogs()->thisMonth()->sum('total_cost');
+    }
+
+    public function getTotalCost()
+    {
+        return $this->usageLogs()->sum('total_cost');
+    }
+
+    public function getProviderCosts()
+    {
+        return $this->usageLogs()
+            ->selectRaw('provider, SUM(total_cost) as total_cost, COUNT(*) as usage_count')
+            ->groupBy('provider')
+            ->get();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
     }
 }

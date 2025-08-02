@@ -21,6 +21,16 @@ return new class extends Migration
             $table->text('content')->nullable(); // Extracted content
             $table->json('metadata')->nullable(); // Additional file metadata
             $table->enum('status', ['processing', 'completed', 'failed', 'active'])->default('processing');
+            
+            // AI Processing Fields
+            $table->text('ai_processed_content')->nullable();
+            $table->text('ai_summary')->nullable();
+            $table->json('ai_categories')->nullable();
+            $table->json('ai_embeddings')->nullable();
+            $table->enum('ai_processing_status', ['pending', 'processing', 'completed', 'failed'])->default('pending');
+            $table->json('ai_metadata')->nullable();
+            $table->timestamp('ai_processed_at')->nullable();
+            
             $table->timestamps();
         });
     }

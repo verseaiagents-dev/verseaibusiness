@@ -388,6 +388,361 @@ class KnowledgeBaseController extends Controller
     }
 
     /**
+     * Get agent data for a project
+     */
+    public function getAgentData(Project $project)
+    {
+        $user = Auth::user();
+        
+        // Check if project belongs to user
+        if ($project->user_id !== $user->id) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Bu projeye erişim izniniz yok.'
+            ], 403);
+        }
+
+        // Get project's agent
+        $agent = $project->agents()->first();
+        
+        if (!$agent) {
+            return response()->json([
+                'success' => true,
+                'stats' => [
+                    'activeIntents' => 0,
+                    'apiEvents' => 0,
+                    'totalAgents' => 0
+                ],
+                'intents' => [],
+                'apiEvents' => []
+            ]);
+        }
+
+        // Get project's sector
+        $projectSector = $project->sector_agent_model ?? 'other';
+        
+        // Get intents and API events
+        $intents = $agent->intents()->where('is_active', true);
+        $apiEvents = $agent->apiEvents();
+        
+        // Filter intents by sector if not 'other'
+        if ($projectSector !== 'other') {
+            $intents = $intents->where('sector', $projectSector);
+        }
+        
+        $intents = $intents->get();
+        $apiEvents = $apiEvents->get();
+
+        return response()->json([
+            'success' => true,
+            'stats' => [
+                'activeIntents' => $intents->count(),
+                'apiEvents' => $apiEvents->count(),
+                'totalAgents' => 1
+            ],
+            'intents' => $intents,
+            'apiEvents' => $apiEvents,
+            'sector' => $projectSector
+        ]);
+    }
+
+    /**
+     * Create a new intent for the project's agent
+     */
+    public function createIntent(Request $request, Project $project)
+    {
+        $user = Auth::user();
+        
+        // Check if user is authenticated
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Kullanıcı girişi yapılmamış.'
+            ], 401);
+        }
+        
+        // Check if project belongs to user
+        if ($project->user_id !== $user->id) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Bu projeye erişim izniniz yok.'
+            ], 403);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'keywords' => 'required|array|min:1',
+            'keywords.*' => 'string|max:100',
+            'response_type' => 'nullable|string',
+            'actions' => 'nullable|array'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        // Get or create agent for this project
+        $agent = $project->agents()->first();
+        if (!$agent) {
+            $agent = \App\Models\Agent::create([
+                'user_id' => $user->id,
+                'project_id' => $project->id,
+                'name' => $project->name . ' Agent',
+                'description' => 'Auto-generated agent for ' . $project->name,
+                'sector' => $project->sector_agent_model ?? 'ecommerce',
+                'is_active' => true,
+                'role_name' => 'AI Assistant',
+                'model_id' => 1, // Default model ID
+                'status' => 'active'
+            ]);
+        }
+
+        // Create intent with template data if available
+        $config = [
+            'keywords' => $request->keywords,
+            'actions' => $request->actions ?? ['custom_action'],
+            'response_type' => $request->response_type ?? 'custom_action'
+        ];
+
+        $intent = \App\Models\Intent::create([
+            'agent_id' => $agent->id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'sector' => $agent->sector === 'general' ? 'ecommerce' : $agent->sector,
+            'is_active' => true,
+            'config' => $config
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Niyet başarıyla oluşturuldu',
+            'intent' => $intent
+        ]);
+    }
+
+    /**
+     * Create a new API event for the project's agent
+     */
+    public function createApiEvent(Request $request, Project $project)
+    {
+        $user = Auth::user();
+        
+        // Check if user is authenticated
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Kullanıcı girişi yapılmamış.'
+            ], 401);
+        }
+        
+        // Check if project belongs to user
+        if ($project->user_id !== $user->id) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Bu projeye erişim izniniz yok.'
+            ], 403);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'method' => 'required|string|in:GET,POST,PUT,DELETE',
+            'endpoint' => 'required|url',
+            'intent_id' => 'nullable|exists:intents,id'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        // Get or create agent for this project
+        $agent = $project->agents()->first();
+        if (!$agent) {
+            $agent = \App\Models\Agent::create([
+                'user_id' => $user->id,
+                'project_id' => $project->id,
+                'name' => $project->name . ' Agent',
+                'description' => 'Auto-generated agent for ' . $project->name,
+                'sector' => $project->sector_agent_model ?? 'ecommerce',
+                'is_active' => true,
+                'role_name' => 'AI Assistant',
+                'model_id' => 1, // Default model ID
+                'status' => 'active'
+            ]);
+        }
+
+        // Create API event
+        $apiEvent = \App\Models\ApiEvent::create([
+            'user_id' => $user->id,
+            'agent_id' => $agent->id,
+            'intent_id' => $request->intent_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'http_method' => $request->method,
+            'endpoint_url' => $request->endpoint,
+            'is_active' => true
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'API Event başarıyla oluşturuldu',
+            'apiEvent' => $apiEvent
+        ]);
+    }
+
+    /**
+     * Get a specific intent for editing
+     */
+    public function getIntent(Request $request, Project $project, $intentId)
+    {
+        $user = Auth::user();
+        
+        // Check if user is authenticated
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Kullanıcı girişi yapılmamış.'
+            ], 401);
+        }
+        
+        // Check if project belongs to user
+        if ($project->user_id !== $user->id) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Bu projeye erişim izniniz yok.'
+            ], 403);
+        }
+
+        // Get the intent
+        $intent = \App\Models\Intent::where('id', $intentId)
+            ->whereHas('agent', function($query) use ($project) {
+                $query->where('project_id', $project->id);
+            })
+            ->first();
+
+        if (!$intent) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Niyet bulunamadı.'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'intent' => $intent
+        ]);
+    }
+
+    /**
+     * Update a specific intent
+     */
+    public function updateIntent(Request $request, Project $project, $intentId)
+    {
+        $user = Auth::user();
+        
+        // Check if user is authenticated
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Kullanıcı girişi yapılmamış.'
+            ], 401);
+        }
+        
+        // Check if project belongs to user
+        if ($project->user_id !== $user->id) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Bu projeye erişim izniniz yok.'
+            ], 403);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'keywords' => 'required|array',
+            'keywords.*' => 'string',
+            'is_active' => 'boolean'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        // Get the intent
+        $intent = \App\Models\Intent::where('id', $intentId)
+            ->whereHas('agent', function($query) use ($project) {
+                $query->where('project_id', $project->id);
+            })
+            ->first();
+
+        if (!$intent) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Niyet bulunamadı.'
+            ], 404);
+        }
+
+        // Update intent
+        $currentConfig = $intent->getAttribute('config');
+        $config = is_string($currentConfig) ? json_decode($currentConfig, true) : ($currentConfig ?? []);
+        $config['keywords'] = $request->keywords;
+
+        $intent->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'is_active' => $request->is_active,
+            'config' => json_encode($config)
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Niyet başarıyla güncellendi',
+            'intent' => $intent
+        ]);
+    }
+
+    /**
+     * Get sector templates for intent creation
+     */
+    public function getSectorTemplates(Project $project)
+    {
+        $user = Auth::user();
+        
+        // Check if project belongs to user
+        if ($project->user_id !== $user->id) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Bu projeye erişim izniniz yok.'
+            ], 403);
+        }
+
+        // Get project's sector
+        $sector = $project->sector_agent_model ?? 'general';
+        
+        // Get templates for the sector
+        $templates = $this->getSectorTemplatesData($sector);
+
+        return response()->json([
+            'success' => true,
+            'sector' => $sector,
+            'templates' => $templates
+        ]);
+    }
+
+    /**
      * Download a knowledge base document
      */
     public function download(Project $project, KnowledgeBase $knowledgeBase)
@@ -428,6 +783,74 @@ class KnowledgeBaseController extends Controller
                 'message' => 'Dosya indirilirken bir hata oluştu: ' . $e->getMessage()
             ], 500);
         }
+    }
+
+    /**
+     * Get sector templates data
+     */
+    private function getSectorTemplatesData($sector)
+    {
+        $templates = [
+            'ecommerce' => [
+                'product_search' => [
+                    'name' => 'Ürün Arama',
+                    'description' => 'Kullanıcının aradığı ürünleri bulma ve listeleme',
+                    'keywords' => ['ürün ara', 'bul', 'hangi', 'en iyi', 'popüler', 'tavsiye'],
+                    'actions' => ['product_search', 'show_categories'],
+                    'response_type' => 'product_list'
+                ],
+                'add_to_cart' => [
+                    'name' => 'Sepete Ekleme',
+                    'description' => 'Ürünü sepete ekleme işlemi',
+                    'keywords' => ['sepete ekle', 'satın al', 'ekle', 'al', 'sipariş ver'],
+                    'actions' => ['add_to_cart', 'check_stock'],
+                    'response_type' => 'cart_action'
+                ],
+                'order_tracking' => [
+                    'name' => 'Sipariş Takibi',
+                    'description' => 'Sipariş durumu ve kargo takibi',
+                    'keywords' => ['sipariş', 'kargo', 'teslimat', 'ne zaman gelir', 'takip'],
+                    'actions' => ['check_order', 'track_shipping'],
+                    'response_type' => 'order_status'
+                ]
+            ],
+            'real_estate' => [
+                'property_search' => [
+                    'name' => 'Emlak Arama',
+                    'description' => 'Kullanıcının kriterlerine uygun emlak arama',
+                    'keywords' => ['emlak ara', 'ev ara', 'daire', 'satılık', 'kiralık'],
+                    'actions' => ['property_search', 'show_listings'],
+                    'response_type' => 'property_search'
+                ],
+                'appointment_request' => [
+                    'name' => 'Randevu Talebi',
+                    'description' => 'Emlak görüntüleme randevusu talep etme',
+                    'keywords' => ['randevu', 'görüntüleme', 'ziyaret', 'müsaitlik'],
+                    'actions' => ['request_appointment', 'check_availability'],
+                    'response_type' => 'appointment_request'
+                ]
+            ],
+            'tourism' => [
+                'booking' => [
+                    'name' => 'Rezervasyon',
+                    'description' => 'Turizm rezervasyon işlemi',
+                    'keywords' => ['rezervasyon', 'booking', 'tur', 'paket'],
+                    'actions' => ['book_tour', 'check_availability'],
+                    'response_type' => 'booking'
+                ]
+            ],
+            'general' => [
+                'general_info' => [
+                    'name' => 'Genel Bilgi',
+                    'description' => 'Genel bilgi ve soru-cevap',
+                    'keywords' => ['bilgi', 'soru', 'nasıl', 'nedir'],
+                    'actions' => ['provide_info', 'answer_question'],
+                    'response_type' => 'general_info'
+                ]
+            ]
+        ];
+        
+        return $templates[$sector] ?? $templates['general'];
     }
 
     /**

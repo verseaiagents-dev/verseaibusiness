@@ -19,6 +19,7 @@ return [
     'training' => 'Training Data',
     'billing' => 'Billing',
     'settings' => 'Settings',
+    'profile' => 'Profile',
     
     // Dashboard
     'dashboard_title' => 'Dashboard',
@@ -62,6 +63,36 @@ return [
     // Messages
     'no_users_found' => 'No users found',
     'confirm_delete' => 'Are you sure you want to delete this user?',
+    
+    // Knowledge Base
+    'knowledge_base' => 'Knowledge Base',
+    'knowledge_base_description' => 'Manage project knowledge base',
+    'documents' => 'Documents',
+    'importoptions' => 'Import Options',
+    'trained_data' => 'Trained Data',
+    'trained_data_description' => 'AI processed documents',
+    'total_documents' => 'Total Documents',
+    'last_update' => 'Last Update',
+    'project_status' => 'Project Status',
+    'back_to_dashboard' => 'Back to Dashboard',
+    'document_type' => 'Document Type',
+    'upload_date' => 'Upload Date',
+    'download' => 'Download',
+    'no_documents_uploaded' => 'No documents uploaded yet',
+    'no_documents_description' => 'Upload documents to enrich your knowledge base',
+    'confirm_delete_document' => 'Are you sure you want to delete this document?',
+    'document_deleted_successfully' => 'Document deleted successfully',
+    'document_deletion_failed' => 'Document deletion failed',
+    'document_deletion_error' => 'Error occurred while deleting document',
+    'document_download_failed' => 'Document download failed',
+    'document_download_error' => 'Error occurred while downloading document',
+    
+    // Sector Templates
+    'sector_templates' => 'Sector Templates',
+    'use_template' => 'Use This Template',
+    'template_loaded' => 'Template loaded successfully!',
+    'templates_loading_error' => 'Error occurred while loading templates',
+    'templates_loading_failed' => 'Templates failed to load',
     'user_updated_successfully' => 'User updated successfully',
     'user_deleted_successfully' => 'User deleted successfully',
     'cannot_delete_self' => 'You cannot delete your own account',

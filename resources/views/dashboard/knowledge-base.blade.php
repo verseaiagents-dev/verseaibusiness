@@ -94,10 +94,32 @@
 
                 <!-- Knowledge Base Content -->
                 <div class="dashboard-content">
-                  
+                    <!-- Tab Navigation -->
+                    <div class="border-b border-gray-200 mb-8">
+                        <nav class="-mb-px flex space-x-8">
+                                <button onclick="knowledgeBaseManager.switchTab('documents')" 
+                                class="tab-button active py-2 px-1 border-b-2 font-medium text-sm" 
+                                        data-tab="documents">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline mr-2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    {{ __('admin.documents') }}
+                                </button>
+                                <button onclick="knowledgeBaseManager.switchTab('agent')" 
+                                class="tab-button py-2 px-1 border-b-2 font-medium text-sm" 
+                                        data-tab="agent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline mr-2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-1a7 7 0 00-7-7H9a7 7 0 00-7 7v1h5m4-5a4 4 0 100-8 4 4 0 000 8z" />
+                                    </svg>
+                                {{ __('admin.agents') }}
+                                </button>
+                            </nav>
+                    </div>
 
-                    <!-- Import Options Section -->
-                    <div class="mb-8">
+                    <!-- Documents Tab Content -->
+                    <div id="documents-tab" class="tab-content active">
+                        <!-- Import Options Section -->
+                        <div class="mb-8">
                          <h2 class="text-2xl font-bold text-gray-900">{{ __('admin.importoptions') }}</h2>
 
 
@@ -296,6 +318,97 @@
                         </div>
                     @endif
                 </div>
+
+                <!-- Agent Tab Content -->
+                    <div id="agent-tab" class="tab-content hidden">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900">Agent Yönetimi</h2>
+                            <p class="text-gray-600 mt-1">AI Agent'ınızın niyet ve eylemlerini yönetin</p>
+                    </div>
+
+                    <!-- Agent Stats -->
+                        <div class="flex flex-col md:flex-row gap-6 mb-8">
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-white text-sm font-medium">Aktif Niyetler</p>
+                                        <p class="text-3xl font-bold" id="active-intents-count">0</p>
+                                    </div>
+                                    <div class="bg-blue-400 rounded-lg p-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-white text-sm font-medium">API Eventler</p>
+                                        <p class="text-3xl font-bold" id="api-events-count">0</p>
+                                    </div>
+                                    <div class="bg-green-400 rounded-lg p-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white flex-1">
+                                <div class="flex items-center justify-between">
+                                <div>
+                                        <p class="text-white text-sm font-medium">Toplam Agent</p>
+                                        <p class="text-3xl font-bold" id="total-agents-count">0</p>
+                                </div>
+                                    <div class="bg-purple-400 rounded-lg p-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-1a7 7 0 00-7-7H9a7 7 0 00-7 7v1h5m4-5a4 4 0 100-8 4 4 0 000 8z" />
+                                        </svg>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                        <!-- Agent Management Sections -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Intent Management -->
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-semibold text-gray-900">Niyet Yönetimi</h3>
+                                    <button onclick="knowledgeBaseManager.openIntentModal()" 
+                                        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline mr-1">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    Yeni Niyet
+                                </button>
+                            </div>
+                                <div id="intents-list" class="space-y-3">
+                            <!-- Intents will be loaded here -->
+                        </div>
+                    </div>
+
+                            <!-- API Event Management -->
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-semibold text-gray-900">API Event Yönetimi</h3>
+                                    <button onclick="knowledgeBaseManager.openApiEventModal()" 
+                                        class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline mr-1">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    Yeni Event
+                                </button>
+                            </div>
+                                <div id="api-events-list" class="space-y-3">
+                            <!-- API Events will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                        </div>
+                </div>
             </div>
         </main>
     </div>
@@ -305,14 +418,47 @@
         class KnowledgeBaseManager {
             constructor() {
                 this.init();
+                this.currentProjectId = window.location.pathname.split('/').pop();
             }
 
             init() {
                 this.bindEvents();
+                this.loadAgentData();
             }
 
             bindEvents() {
-                // No modal events needed
+                // Tab switching
+                document.querySelectorAll('.tab-button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        this.switchTab(e.target.dataset.tab);
+                    });
+                });
+            }
+
+            switchTab(tabName) {
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+
+                // Remove active class from all tab buttons
+                document.querySelectorAll('.tab-button').forEach(button => {
+                    button.classList.remove('active', 'border-blue-500', 'text-blue-600');
+                    button.classList.add('border-transparent', 'text-gray-500');
+                });
+
+                // Show selected tab content
+                document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+
+                // Add active class to selected tab button
+                const activeButton = document.querySelector(`[data-tab="${tabName}"]`);
+                activeButton.classList.add('active', 'border-blue-500', 'text-blue-600');
+                activeButton.classList.remove('border-transparent', 'text-gray-500');
+
+                // Load data if switching to agent tab
+                if (tabName === 'agent') {
+                    this.loadAgentData();
+                }
             }
 
             showSuccess(message) {
@@ -557,6 +703,569 @@
                     this.showError('Import sırasında hata oluştu: ' + error.message);
                 }
             }
+
+            // Agent Management Functions
+        async loadAgentData() {
+            try {
+                    const response = await fetch(`/api/projects/${this.currentProjectId}/agent-data`, {
+                        method: 'GET',
+                    headers: {
+                            'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                    }
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    this.updateAgentStats(data.stats);
+                        this.renderIntents(data.intents);
+                        this.renderApiEvents(data.apiEvents);
+                    } else {
+                        this.showError(data.message || 'Agent verileri yüklenemedi');
+                }
+            } catch (error) {
+                console.error('Error loading agent data:', error);
+                    this.showError('Agent verileri yüklenirken hata oluştu');
+            }
+        }
+
+        updateAgentStats(stats) {
+            document.getElementById('active-intents-count').textContent = stats.activeIntents || 0;
+            document.getElementById('api-events-count').textContent = stats.apiEvents || 0;
+                document.getElementById('total-agents-count').textContent = stats.totalAgents || 0;
+        }
+
+            renderIntents(intents) {
+            const container = document.getElementById('intents-list');
+            container.innerHTML = '';
+
+            if (intents.length === 0) {
+                container.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-3">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                            <p>Henüz niyet tanımlanmamış</p>
+                    </div>
+                `;
+                return;
+            }
+
+            intents.forEach(intent => {
+                    const intentElement = document.createElement('div');
+                    intentElement.className = 'bg-gray-50 rounded-lg p-4 border border-gray-200';
+                    intentElement.innerHTML = `
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-medium text-gray-900">${intent.name}</h4>
+                            <div class="flex items-center space-x-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${intent.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}">
+                                ${intent.is_active ? 'Aktif' : 'Pasif'}
+                            </span>
+                        <button onclick="knowledgeBaseManager.editIntent(${intent.id})" class="text-blue-600 hover:text-blue-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                        <p class="text-sm text-gray-600 mb-2">${intent.description || 'Açıklama yok'}</p>
+                        <div class="flex flex-wrap gap-1">
+                            ${(intent.config?.keywords || []).slice(0, 3).map(keyword => 
+                                `<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">${keyword}</span>`
+                            ).join('')}
+                            ${(intent.config?.keywords || []).length > 3 ? 
+                                `<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">+${(intent.config?.keywords || []).length - 3} daha</span>` : ''
+                            }
+                </div>
+            `;
+                    container.appendChild(intentElement);
+                });
+        }
+
+            renderApiEvents(apiEvents) {
+            const container = document.getElementById('api-events-list');
+            container.innerHTML = '';
+
+            if (apiEvents.length === 0) {
+                container.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto mb-3">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                            <p>Henüz API event tanımlanmamış</p>
+                    </div>
+                `;
+                return;
+            }
+
+            apiEvents.forEach(event => {
+                    const eventElement = document.createElement('div');
+                    eventElement.className = 'bg-gray-50 rounded-lg p-4 border border-gray-200';
+                    eventElement.innerHTML = `
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-medium text-gray-900">${event.name}</h4>
+                            <div class="flex items-center space-x-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                ${event.http_method || 'N/A'}
+                            </span>
+                        <button onclick="knowledgeBaseManager.editApiEvent(${event.id})" class="text-blue-600 hover:text-blue-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                            </svg>
+                        </button>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">${event.description || 'Açıklama yok'}</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="font-medium">Endpoint:</span> ${event.endpoint_url || 'N/A'}
+                        </div>
+                    `;
+                    container.appendChild(eventElement);
+                });
+            }
+
+            openIntentModal() {
+                const modal = this.createIntentModal();
+                document.body.appendChild(modal);
+            }
+
+            openApiEventModal() {
+                const modal = this.createApiEventModal();
+                document.body.appendChild(modal);
+            }
+
+            createIntentModal() {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Yeni Niyet Ekle</h3>
+                                <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                            </div>
+                            
+                            <!-- Sector Templates Section -->
+                            <div class="mb-6">
+                                <h4 class="text-sm font-medium text-gray-700 mb-3">{{ __('admin.sector_templates') }}</h4>
+                                <div id="sector-templates" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <!-- Templates will be loaded here -->
+                                </div>
+                            </div>
+                            
+                            <form id="intentForm" class="space-y-4" onsubmit="knowledgeBaseManager.handleIntentSubmit(this); return false;">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Niyet Adı</label>
+                                    <input type="text" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Açıklama</label>
+                                    <textarea name="description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Anahtar Kelimeler (virgülle ayırın)</label>
+                                    <input type="text" name="keywords" placeholder="sepete ekle, satın al, ürün ara" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div class="flex justify-end space-x-3 pt-4">
+                                    <button type="button" onclick="this.closest('.fixed').remove()" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
+                                        İptal
+                                    </button>
+                                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                        Kaydet
+                                    </button>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            `;
+
+                // Load sector templates
+                this.loadSectorTemplates(modal);
+
+                return modal;
+            }
+
+            createApiEventModal() {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Yeni API Event Ekle</h3>
+                                <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <form id="apiEventForm" class="space-y-4" onsubmit="knowledgeBaseManager.handleApiEventSubmit(this); return false;">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Event Adı</label>
+                                    <input type="text" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Açıklama</label>
+                                    <textarea name="description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">İlişkili Niyet</label>
+                                    <select name="intent_id" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="">Niyet Seçin (Opsiyonel)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">HTTP Metodu</label>
+                                    <select name="method" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                        <option value="PUT">PUT</option>
+                                        <option value="DELETE">DELETE</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Endpoint URL</label>
+                                    <input type="url" name="endpoint" placeholder="https://api.example.com/endpoint" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div class="flex justify-end space-x-3 pt-4">
+                                    <button type="button" onclick="this.closest('.fixed').remove()" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
+                                        İptal
+                                    </button>
+                                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                                        Kaydet
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+
+                // Load intents into dropdown
+                this.loadIntentsForApiEvent(modal);
+
+                return modal;
+            }
+
+            async handleIntentSubmit(form) {
+                const formData = new FormData(form);
+                const intentData = {
+                    name: formData.get('name'),
+                    description: formData.get('description'),
+                    keywords: formData.get('keywords').split(',').map(k => k.trim()).filter(k => k),
+                    project_id: this.currentProjectId
+                };
+
+                // Add template data if available
+                if (form.dataset.templateKey) {
+                    intentData.response_type = form.dataset.templateKey;
+                    intentData.actions = JSON.parse(form.dataset.templateActions || '[]');
+                }
+
+                try {
+                    const response = await fetch(`/api/projects/${this.currentProjectId}/intents`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        },
+                        body: JSON.stringify(intentData)
+                    });
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Server response:', errorText);
+                        throw new Error(`HTTP ${response.status}: ${errorText}`);
+                    }
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.showSuccess('Niyet başarıyla eklendi!');
+                        form.closest('.fixed').remove();
+                        this.loadAgentData();
+                    } else {
+                        this.showError(data.message || 'Niyet eklenemedi');
+                    }
+                } catch (error) {
+                    console.error('Error creating intent:', error);
+                    this.showError('Niyet eklenirken hata oluştu: ' + error.message);
+                }
+            }
+
+            async handleApiEventSubmit(form) {
+                const formData = new FormData(form);
+                const eventData = {
+                    name: formData.get('name'),
+                    description: formData.get('description'),
+                    method: formData.get('method'),
+                    endpoint: formData.get('endpoint'),
+                    intent_id: formData.get('intent_id') || null,
+                    project_id: this.currentProjectId
+                };
+
+                try {
+                    const response = await fetch(`/api/projects/${this.currentProjectId}/api-events`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        },
+                        body: JSON.stringify(eventData)
+                    });
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Server response:', errorText);
+                        throw new Error(`HTTP ${response.status}: ${errorText}`);
+                    }
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.showSuccess('API Event başarıyla eklendi!');
+                        form.closest('.fixed').remove();
+                        this.loadAgentData();
+                    } else {
+                        this.showError(data.message || 'API Event eklenemedi');
+                    }
+                } catch (error) {
+                    console.error('Error creating API event:', error);
+                    this.showError('API Event eklenirken hata oluştu: ' + error.message);
+                }
+            }
+
+            editIntent(intentId) {
+                // Implementation for editing intent
+                this.showError('Düzenleme özelliği yakında eklenecek');
+        }
+
+        editApiEvent(eventId) {
+            // Implementation for editing API event
+                this.showError('Düzenleme özelliği yakında eklenecek');
+            }
+
+            async loadSectorTemplates(modal) {
+                try {
+                    const response = await fetch(`/api/projects/${this.currentProjectId}/sector-templates`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.renderSectorTemplates(modal, data.templates, data.sector);
+                    } else {
+                        this.showError(data.message || '{{ __("admin.templates_loading_failed") }}');
+                    }
+                } catch (error) {
+                    console.error('Error loading sector templates:', error);
+                    this.showError('{{ __("admin.templates_loading_error") }}');
+                }
+            }
+
+            renderSectorTemplates(modal, templates, sector) {
+                const container = modal.querySelector('#sector-templates');
+                container.innerHTML = '';
+
+                Object.entries(templates).forEach(([key, template]) => {
+                    const templateElement = document.createElement('div');
+                    templateElement.className = 'bg-gray-50 rounded-lg p-4 border border-gray-200 hover:border-blue-300 cursor-pointer transition-colors';
+                    templateElement.innerHTML = `
+                        <div class="flex items-start justify-between mb-2">
+                            <h5 class="font-medium text-gray-900">${template.name}</h5>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                ${sector}
+                            </span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">${template.description}</p>
+                        <div class="flex flex-wrap gap-1 mb-3">
+                            ${template.keywords.slice(0, 3).map(keyword => 
+                                `<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">${keyword}</span>`
+                            ).join('')}
+                            ${template.keywords.length > 3 ? 
+                                `<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">+${template.keywords.length - 3} daha</span>` : ''
+                            }
+                        </div>
+                        <button type="button" class="w-full text-sm text-blue-600 hover:text-blue-800 font-medium">
+                            {{ __('admin.use_template') }}
+                        </button>
+                    `;
+
+                    // Add click event to fill form with template data
+                    templateElement.addEventListener('click', () => {
+                        this.fillIntentFormWithTemplate(modal, template);
+                    });
+
+                    container.appendChild(templateElement);
+                });
+            }
+
+            fillIntentFormWithTemplate(modal, template) {
+                const form = modal.querySelector('#intentForm');
+                form.querySelector('input[name="name"]').value = template.name;
+                form.querySelector('textarea[name="description"]').value = template.description;
+                form.querySelector('input[name="keywords"]').value = template.keywords.join(', ');
+
+                // Add template data to form for submission
+                form.dataset.templateKey = template.response_type;
+                form.dataset.templateActions = JSON.stringify(template.actions);
+
+                // Show success message
+                this.showSuccess('{{ __("admin.template_loaded") }}');
+            }
+
+            async loadIntentsForApiEvent(modal) {
+                try {
+                    const response = await fetch(`/api/projects/${this.currentProjectId}/agent-data`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        }
+                    });
+
+                    const data = await response.json();
+                    
+                    if (data.success && data.intents) {
+                        const select = modal.querySelector('select[name="intent_id"]');
+                        
+                        // Clear existing options except the first one
+                        while (select.children.length > 1) {
+                            select.removeChild(select.lastChild);
+                        }
+                        
+                        // Add intent options
+                        data.intents.forEach(intent => {
+                            const option = document.createElement('option');
+                            option.value = intent.id;
+                            option.textContent = intent.name;
+                            select.appendChild(option);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading intents for API event:', error);
+                }
+            }
+
+            async editIntent(intentId) {
+                try {
+                    // Get intent data
+                    const response = await fetch(`/api/projects/${this.currentProjectId}/intents/${intentId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        }
+                    });
+
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        const modal = this.createEditIntentModal(data.intent);
+                        document.body.appendChild(modal);
+                    } else {
+                        this.showError(data.message || 'Niyet bilgileri yüklenemedi');
+                    }
+                } catch (error) {
+                    console.error('Error loading intent for edit:', error);
+                    this.showError('Niyet bilgileri yüklenirken hata oluştu');
+                }
+            }
+
+            createEditIntentModal(intent) {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Niyet Düzenle</h3>
+                                <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <form id="editIntentForm" class="space-y-4" onsubmit="knowledgeBaseManager.handleEditIntentSubmit(this, ${intent.id}); return false;">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Niyet Adı</label>
+                                    <input type="text" name="name" value="${intent.name}" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Açıklama</label>
+                                    <textarea name="description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">${intent.description || ''}</textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Anahtar Kelimeler (virgülle ayırın)</label>
+                                    <input type="text" name="keywords" value="${(intent.config?.keywords || []).join(', ')}" placeholder="sepete ekle, satın al, ürün ara" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Durum</label>
+                                    <select name="is_active" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="1" ${intent.is_active ? 'selected' : ''}>Aktif</option>
+                                        <option value="0" ${!intent.is_active ? 'selected' : ''}>Pasif</option>
+                                    </select>
+                                </div>
+                                <div class="flex justify-end space-x-3 pt-4">
+                                    <button type="button" onclick="this.closest('.fixed').remove()" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
+                                        İptal
+                                    </button>
+                                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                        Güncelle
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+
+                return modal;
+            }
+
+            async handleEditIntentSubmit(form, intentId) {
+                const formData = new FormData(form);
+                const intentData = {
+                    name: formData.get('name'),
+                    description: formData.get('description'),
+                    keywords: formData.get('keywords').split(',').map(k => k.trim()).filter(k => k),
+                    is_active: formData.get('is_active') === '1',
+                    project_id: this.currentProjectId
+                };
+
+                try {
+                    const response = await fetch(`/api/projects/${this.currentProjectId}/intents/${intentId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        },
+                        body: JSON.stringify(intentData)
+                    });
+
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.showSuccess('Niyet başarıyla güncellendi');
+                        form.closest('.fixed').remove();
+                        this.loadAgentData(); // Reload the data
+                    } else {
+                        this.showError(data.message || 'Niyet güncellenirken hata oluştu');
+                    }
+                } catch (error) {
+                    console.error('Error updating intent:', error);
+                    this.showError('Niyet güncellenirken hata oluştu');
+                }
+            }
         }
 
         // Initialize knowledge base manager
@@ -572,5 +1281,44 @@
     <script src="{{ asset('dashboard/assets/libs/lucide/umd/lucide.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/tailwick.bundle.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/app.js') }}"></script>
+    
+    <style>
+        /* Tab Styles */
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            border-color: #3b82f6;
+            color: #2563eb;
+        }
+        
+        .tab-button:not(.active) {
+            border-color: transparent;
+            color: #6b7280;
+        }
+        
+        .tab-button:hover:not(.active) {
+            color: #374151;
+        }
+        
+        .tab-content {
+            transition: opacity 0.3s ease;
+        }
+        
+        .tab-content.hidden {
+            display: none;
+        }
+        
+        /* Agent Management Styles */
+        .intent-card, .api-event-card {
+            transition: all 0.2s ease;
+        }
+        
+        .intent-card:hover, .api-event-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </body>
 </html> 

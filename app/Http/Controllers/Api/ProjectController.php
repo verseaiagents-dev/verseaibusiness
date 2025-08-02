@@ -35,10 +35,13 @@ class ProjectController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'token_limit' => 'required|integer|min:1',
+            'sector_agent_model' => 'required|string|in:ecommerce,real_estate,tourism,other',
         ], [
             'name.required' => 'Proje ismi zorunludur.',
             'token_limit.required' => 'Token limit zorunludur.',
             'token_limit.min' => 'Token limit en az 1 olmalıdır.',
+            'sector_agent_model.required' => 'Sektör seçimi zorunludur.',
+            'sector_agent_model.in' => 'Geçersiz sektör seçimi.',
         ]);
 
         if ($validator->fails()) {
@@ -63,6 +66,7 @@ class ProjectController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
                 'token_limit' => $request->token_limit,
+                'sector_agent_model' => $request->sector_agent_model,
             ]);
 
             // Deduct tokens from user balance
@@ -121,6 +125,7 @@ class ProjectController extends Controller
             'name' => 'sometimes|required|string|max:255',
             'description' => 'nullable|string',
             'token_limit' => 'sometimes|required|integer|min:1',
+            'sector_agent_model' => 'sometimes|required|string|in:ecommerce,real_estate,tourism,other',
         ]);
 
         if ($validator->fails()) {
@@ -146,7 +151,7 @@ class ProjectController extends Controller
             $oldTokenLimit = $project->token_limit;
             
             $project->update($request->only([
-                'name', 'description', 'token_limit'
+                'name', 'description', 'token_limit', 'sector_agent_model'
             ]));
 
             // Adjust user token balance if token_limit changed

@@ -48,6 +48,14 @@ class Project extends Model
     }
 
     /**
+     * Get the main agent for this project.
+     */
+    public function agent()
+    {
+        return $this->hasOne(Agent::class);
+    }
+
+    /**
      * Check if user has enough token balance for this project
      */
     public function canCreateWithUserBalance(User $user): bool

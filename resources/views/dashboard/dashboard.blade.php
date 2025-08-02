@@ -71,24 +71,7 @@
                         <h1 class="text-3xl font-bold text-gray-900">{{ __('admin.dashboard_title') }}</h1>
                         <p class="text-gray-600 mt-1">{{ __('admin.dashboard_description') }}</p>
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <button id="refreshBtn" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 inline mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                            </svg>
-                            {{ __('admin.refresh_data') }}
-                        </button>
-                        
-                        <!-- Admin Panel Button (Only for admin users) -->
-                        @if(auth()->check() && auth()->user()->role === 'admin')
-                        <a href="{{ route('admin.panel') }}" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 inline mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zM10.5 15.75l-1.5-1.5L6 15.75" />
-                            </svg>
-                            {{ __('admin.admin_panel') }}
-                        </a>
-                        @endif
-                    </div>
+
                 </div>
 
                 <!-- Loading Indicator -->
@@ -255,6 +238,24 @@
                             </div>
                         </div>
 
+                        <!-- Sector -->
+                        <div>
+                            <label for="projectSector" class="block text-sm font-medium text-gray-700 mb-2">
+                                Sektör *
+                            </label>
+                            <select id="projectSector" name="sector_agent_model" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Sektör seçin</option>
+                                <option value="ecommerce">E-Ticaret</option>
+                                <option value="real_estate">Emlak</option>
+                                <option value="tourism">Turizm</option>
+                                <option value="other">Diğer</option>
+                            </select>
+                            <div class="mt-1 text-sm text-gray-500">
+                                Seçtiğiniz sektöre göre niyet ve event'ler önerilecektir
+                            </div>
+                        </div>
+
 
                     </div>
 
@@ -267,6 +268,96 @@
                         <button type="submit" id="createProjectBtn"
                             class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                             Proje Oluştur
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Project Modal -->
+    <div id="editProjectModal" class="fixed inset-0 bg-black bg-opacity-50 hidden modal-overlay">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl modal-content">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-6 border-b border-gray-200 flex-shrink-0">
+                    <h3 class="text-lg font-semibold text-gray-900">Proje Düzenle</h3>
+                    <button id="closeEditModalBtn" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <form id="editProjectForm" class="p-6 flex-1 overflow-y-auto">
+                    <input type="hidden" id="editProjectId" name="project_id">
+                    <div class="space-y-4">
+                        <!-- Project Name -->
+                        <div>
+                            <label for="editProjectName" class="block text-sm font-medium text-gray-700 mb-2">
+                                Proje İsmi *
+                            </label>
+                            <input type="text" id="editProjectName" name="name" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Proje ismini girin">
+                        </div>
+
+                        <!-- Description -->
+                        <div>
+                            <label for="editProjectDescription" class="block text-sm font-medium text-gray-700 mb-2">
+                                Açıklama
+                            </label>
+                            <textarea id="editProjectDescription" name="description" rows="3"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Proje açıklaması (opsiyonel)"></textarea>
+                        </div>
+
+                        <!-- Token Limit -->
+                        <div>
+                            <label for="editTokenLimit" class="block text-sm font-medium text-gray-700 mb-2">
+                                Token Limit *
+                            </label>
+                            <div class="flex items-center space-x-2">
+                                <input type="number" id="editTokenLimit" name="token_limit" required min="1"
+                                    class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Token limit">
+                                <span class="text-sm text-gray-500">token</span>
+                            </div>
+                            <div class="mt-1 text-sm text-gray-500">
+                                Mevcut bakiye: <span id="editCurrentBalance" class="font-medium">--</span> token
+                            </div>
+                        </div>
+
+                        <!-- Sector -->
+                        <div>
+                            <label for="editProjectSector" class="block text-sm font-medium text-gray-700 mb-2">
+                                Sektör *
+                            </label>
+                            <select id="editProjectSector" name="sector_agent_model" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Sektör seçin</option>
+                                <option value="ecommerce">E-Ticaret</option>
+                                <option value="real_estate">Emlak</option>
+                                <option value="tourism">Turizm</option>
+                                <option value="other">Diğer</option>
+                            </select>
+                            <div class="mt-1 text-sm text-gray-500">
+                                Seçtiğiniz sektöre göre niyet ve event'ler önerilecektir
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="flex items-center justify-end space-x-3 mt-6 pt-6 border-t border-gray-200 bg-white flex-shrink-0">
+                        <button type="button" id="cancelEditProjectBtn"
+                            class="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                            İptal
+                        </button>
+                        <button type="submit" id="updateProjectBtn"
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            Güncelle
                         </button>
                     </div>
                 </form>
@@ -407,12 +498,52 @@
                     });
                 }
 
+                // Edit Modal Events
+                // Close edit modal button
+                const closeEditModalBtn = document.getElementById('closeEditModalBtn');
+                if (closeEditModalBtn) {
+                    closeEditModalBtn.addEventListener('click', () => {
+                        this.closeEditProjectModal();
+                    });
+                }
+
+                // Cancel edit project button
+                const cancelEditProjectBtn = document.getElementById('cancelEditProjectBtn');
+                if (cancelEditProjectBtn) {
+                    cancelEditProjectBtn.addEventListener('click', () => {
+                        this.closeEditProjectModal();
+                    });
+                }
+
+                // Edit project form
+                const editProjectForm = document.getElementById('editProjectForm');
+                if (editProjectForm) {
+                    editProjectForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        this.updateProject();
+                    });
+                }
+
+                // Close edit modal when clicking outside
+                const editModal = document.getElementById('editProjectModal');
+                if (editModal) {
+                    editModal.addEventListener('click', (e) => {
+                        if (e.target === editModal) {
+                            this.closeEditProjectModal();
+                        }
+                    });
+                }
+
                 // Close modal with ESC key
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
-                        const modal = document.getElementById('newProjectModal');
-                        if (modal && !modal.classList.contains('hidden')) {
+                        const newModal = document.getElementById('newProjectModal');
+                        const editModal = document.getElementById('editProjectModal');
+                        if (newModal && !newModal.classList.contains('hidden')) {
                             this.closeNewProjectModal();
+                        }
+                        if (editModal && !editModal.classList.contains('hidden')) {
+                            this.closeEditProjectModal();
                         }
                     }
                 });
@@ -661,6 +792,27 @@
                 }
             }
 
+            openEditProjectModal(projectData) {
+                const modal = document.getElementById('editProjectModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    // Prevent body scroll when modal is open
+                    document.body.style.overflow = 'hidden';
+                    this.loadEditUserInfo();
+                    this.populateEditForm(projectData);
+                }
+            }
+
+            closeEditProjectModal() {
+                const modal = document.getElementById('editProjectModal');
+                if (modal) {
+                    modal.classList.add('hidden');
+                    // Restore body scroll when modal is closed
+                    document.body.style.overflow = '';
+                    this.resetEditForm();
+                }
+            }
+
             async loadUserInfo() {
                 try {
                     const response = await fetch('/api/projects/user/info', {
@@ -690,6 +842,49 @@
                 }
             }
 
+            populateEditForm(projectData) {
+                const projectIdInput = document.getElementById('editProjectId');
+                const nameInput = document.getElementById('editProjectName');
+                const descriptionInput = document.getElementById('editProjectDescription');
+                const tokenLimitInput = document.getElementById('editTokenLimit');
+                const sectorInput = document.getElementById('editProjectSector');
+
+                if (projectIdInput) projectIdInput.value = projectData.id;
+                if (nameInput) nameInput.value = projectData.name;
+                if (descriptionInput) descriptionInput.value = projectData.description || '';
+                if (tokenLimitInput) tokenLimitInput.value = projectData.token_limit;
+                if (sectorInput) sectorInput.value = projectData.sector_agent_model || '';
+            }
+
+            resetEditForm() {
+                const form = document.getElementById('editProjectForm');
+                if (form) {
+                    form.reset();
+                }
+            }
+
+            async loadEditUserInfo() {
+                try {
+                    const response = await fetch('/api/projects/user/info', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        }
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        const currentBalance = document.getElementById('editCurrentBalance');
+                        if (currentBalance) {
+                            currentBalance.textContent = data.data.token_balance;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading user info:', error);
+                }
+            }
+
             async createNewProject() {
                 const form = document.getElementById('newProjectForm');
                 if (!form) return;
@@ -698,7 +893,8 @@
                 const projectData = {
                     name: formData.get('name'),
                     description: formData.get('description'),
-                    token_limit: parseInt(formData.get('token_limit'))
+                    token_limit: parseInt(formData.get('token_limit')),
+                    sector_agent_model: formData.get('sector_agent_model')
                 };
 
                 // Validation
@@ -709,6 +905,11 @@
 
                 if (!projectData.token_limit || projectData.token_limit < 1) {
                     this.showError('Geçerli bir token limit giriniz.');
+                    return;
+                }
+
+                if (!projectData.sector_agent_model) {
+                    this.showError('Sektör seçimi gereklidir.');
                     return;
                 }
 
@@ -753,9 +954,94 @@
                 }
             }
 
+            async updateProject() {
+                const form = document.getElementById('editProjectForm');
+                if (!form) return;
+
+                const formData = new FormData(form);
+                const projectId = formData.get('project_id');
+                const projectData = {
+                    name: formData.get('name'),
+                    description: formData.get('description'),
+                    token_limit: parseInt(formData.get('token_limit')),
+                    sector_agent_model: formData.get('sector_agent_model')
+                };
+
+                // Validation
+                if (!projectData.name) {
+                    this.showError('Proje ismi gereklidir.');
+                    return;
+                }
+
+                if (!projectData.token_limit || projectData.token_limit < 1) {
+                    this.showError('Geçerli bir token limit giriniz.');
+                    return;
+                }
+
+                if (!projectData.sector_agent_model) {
+                    this.showError('Sektör seçimi gereklidir.');
+                    return;
+                }
+
+                const updateBtn = document.getElementById('updateProjectBtn');
+                if (updateBtn) {
+                    updateBtn.disabled = true;
+                    updateBtn.textContent = 'Güncelleniyor...';
+                }
+
+                try {
+                    const response = await fetch(`/api/projects/${projectId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        },
+                        body: JSON.stringify(projectData)
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.showSuccess('Proje başarıyla güncellendi!');
+                        this.closeEditProjectModal();
+                        this.loadProjects(); // Reload projects list
+                        this.loadDashboardData(); // Refresh dashboard stats
+                    } else {
+                        this.showError(data.message || 'Proje güncellenemedi.');
+                    }
+                } catch (error) {
+                    console.error('Error updating project:', error);
+                    this.showError('Proje güncellenirken bir hata oluştu.');
+                } finally {
+                    if (updateBtn) {
+                        updateBtn.disabled = false;
+                        updateBtn.textContent = 'Güncelle';
+                    }
+                }
+            }
+
             async editProject(projectId) {
-                // TODO: Implement edit project functionality
-                this.showError('Düzenleme özelliği henüz aktif değil.');
+                try {
+                    // Load project data
+                    const response = await fetch(`/api/projects/${projectId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        this.openEditProjectModal(data.data);
+                    } else {
+                        this.showError(data.message || 'Proje bilgileri yüklenemedi.');
+                    }
+                } catch (error) {
+                    console.error('Error loading project data:', error);
+                    this.showError('Proje bilgileri yüklenirken bir hata oluştu.');
+                }
             }
 
             async deleteProject(projectId) {
